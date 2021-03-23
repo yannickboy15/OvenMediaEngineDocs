@@ -1,4 +1,4 @@
-# RTSP Pull \(Beta\)
+# RTSP Pull
 
 From version 0.10.4, RTSP Pull input is supported as a beta version. The supported codecs are H.264, AAC\(ADTS\). Supported codecs will continue to be added. 
 

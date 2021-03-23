@@ -1,4 +1,4 @@
-# MPEG-2 TS \(Beta\)
+# MPEG-2 TS
 
 From version 0.10.4, MPEG-2 TS input is supported as a beta version. The supported codecs are H.264, AAC\(ADTS\). Supported codecs will continue to be added. And the current version only supports basic MPEG-2 TS with 188 bytes packet size. Since the information about the input stream is obtained using PAT and PMT, the client must send this table information as required.
 
