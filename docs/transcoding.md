@@ -99,6 +99,8 @@ The meaning of each property is as follows:
 | Samplerate | Samples per second |
 | Channel | The number of audio channels |
 
+It is possible to have an audio only output profile by specifying the Audio profile and omitting a Video one.
+
 #### Bypass transcoding
 
 You can configure Video and Audio to bypass transcoding as follows:
