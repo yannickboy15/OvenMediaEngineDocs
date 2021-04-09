@@ -17,8 +17,8 @@ Request Example:
     "tracks": [ 101, 102 ]  
   },  
   "protocol": "rtmp",  
-  "url":"rtmp://{ip}/{appName}",  
-  "steramkey":"{streamName}"  
+  "url":"rtmp://{host}[:port]/{appName}",  
+  "streamkey":"{streamName}"  
 }`
 {% endapi-method-description %}
 
