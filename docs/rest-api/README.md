@@ -80,7 +80,7 @@ Here is the description of the API
   
 Request Example:  
 `- Method: GET  
-- URL: http://1.2.3.4:8081/v1/vhost  
+- URL: http://1.2.3.4:8081/v1/vhosts  
 - Header:  
   authorization: Basic b21ldGVzdA==`
 {% endapi-method-description %}
@@ -168,7 +168,7 @@ All response results are provided in the HTTP status code and response body, and
 // Multiple data request (Status codes are the same)
 
 // << Request >>
-// Request URI: POST /v1/vhost/default/apps
+// Request URI: POST /v1/vhosts/default/apps
 // Header:
 //   authorization: Basic b21lLWFjY2Vzcy10b2tlbg==
 // Request Body:
@@ -198,7 +198,7 @@ All response results are provided in the HTTP status code and response body, and
 // Multiple data request (Different status codes)
 
 // << Request >>
-// Request URI: POST /v1/vhost/default/apps
+// Request URI: POST /v1/vhosts/default/apps
 // Header:
 //   authorization: Basic b21lLWFjY2Vzcy10b2tlbg==
 // Request Body:
