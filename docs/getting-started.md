@@ -32,8 +32,8 @@ You can set the following environment variables.
 OvenMediaEngine can work with a variety of open-sources and libraries. First, install them on your clean Linux machine as described below. We think that OME can support most Linux packages, but the tested platforms we use are Ubuntu 18+, Fedora 28+, and CentOS 7+.
 
 ```bash
-(curl -LOJ https://github.com/AirenSoft/OvenMediaEngine/archive/v0.11.1.tar.gz && tar xvfz OvenMediaEngine-0.11.1.tar.gz)
-OvenMediaEngine-0.11.1/misc/prerequisites.sh
+(curl -LOJ https://github.com/AirenSoft/OvenMediaEngine/archive/v0.11.2.tar.gz && tar xvfz OvenMediaEngine-0.11.2.tar.gz)
+OvenMediaEngine-0.11.2/misc/prerequisites.sh
 ```
 
 {% hint style="info" %}
@@ -48,7 +48,7 @@ You can build the OvenMediaEngine source using the following command:
 {% tab title="Ubuntu 18" %}
 ```bash
 sudo apt-get update
-cd OvenMediaEngine-0.11.1/src
+cd OvenMediaEngine-0.11.2/src
 make release
 sudo make install
 systemctl start ovenmediaengine
@@ -60,7 +60,7 @@ systemctl enable ovenmediaengine.service 
 {% tab title="Fedora 28" %}
 ```bash
 sudo dnf update
-cd OvenMediaEngine-0.11.1/src
+cd OvenMediaEngine-0.11.2/src
 make release
 sudo make install
 systemctl start ovenmediaengine
@@ -73,7 +73,7 @@ systemctl enable ovenmediaengine.service
 ```bash
 sudo yum update
 source scl_source enable devtoolset-7
-cd OvenMediaEngine-0.11.1/src
+cd OvenMediaEngine-0.11.2/src
 make release
 sudo make install
 systemctl start ovenmediaengine
