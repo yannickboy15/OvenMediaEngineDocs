@@ -2,6 +2,8 @@
 
 Secure Reliable Transport \(or SRT in short\) is an open source video transport protocol and technology stack that optimizes streaming performance across unpredictable networks with secure streams and easy firewall traversal, bringing the best quality live video over the worst networks. We consider SRT to be one of the great alternatives to RTMP, and OvenMediaEngine can receive video streaming over SRT. For more information on SRT, please visit the [SRT Alliance website](https://www.srtalliance.org/).
 
+When transmitting a live stream by SRT, MPEG-TS format is used. This means that unlike RTMP, it can support many codecs. Currently, OvenMediaEngine supports H.264, H.265, AAC transport on SRT.
+
 ## Configuration
 
 ### Bind
@@ -31,7 +33,7 @@ SRT input can be turned on/off for each application. As follows Setting  enables
 			<SRT/>
 ```
 
-## Encoders
+## Encoders and streamid
 
 There are various encoders that support SRT such as FFMPEG, OBS Studio, and srt-live-transmit. Please check the specifications of each encoder on how to transmit streams through SRT from the encoder. We describe an example using OBS Studio.
 
