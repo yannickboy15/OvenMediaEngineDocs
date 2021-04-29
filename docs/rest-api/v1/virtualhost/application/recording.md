@@ -10,7 +10,6 @@ This is an action that requests recording of the output stream. The output file 
   
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:startRecord  
-  
 {  
   "id": "userDefinedUniqueId",  
   "stream": {  
@@ -21,7 +20,9 @@ Request Example:
     ]  
   },  
   "filePath" : "{/path/to/save/recorded/file.ts}",  
-  "infoPath" : "{/Path/to/save/information/file.xml}"  
+  "infoPath" : "{/Path/to/save/information/file.xml}",  
+  "interval" : 60000,              # Split it every 60 seconds  
+  "schedule" : "0 0 */1"           # Split it at second 0, minute 0, every hours.   
 }`
 {% endapi-method-description %}
 
@@ -40,11 +41,21 @@ A name of `Application`
 {% api-method-headers %}
 {% api-method-parameter required=true name="authorization" type="string" %}
 A string for authentication in `Basic Base64(AccessToken)` format.  
-For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-token`.
+For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-token`
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
+{% api-method-parameter name="schedule" type="string" required=false %}
+Schedule based split recording.  set only &lt;second minute hour&gt; using crontab method  
+It cannot be used simultaneously with interval
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="interval" type="number" required=false %}
+Interval based split recording. millisecond unit  
+It canoot be used sumultaneously with schedule
+{% endapi-method-parameter %}
+
 {% api-method-parameter name="id" type="string" required=true %}
 An unique identifier for recording management
 {% endapi-method-parameter %}
@@ -122,6 +133,11 @@ Path to save information file
 {
 	"statusCode": 400,
 	"message": "Duplicate ID already exists [{id}] (400)"
+}
+
+{
+  "statusCode": 400,
+  "message" : "[Interval] and [Schedule] cannot be used at the same time"
 }
 ```
 {% endapi-method-response-example %}

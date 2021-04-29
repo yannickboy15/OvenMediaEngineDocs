@@ -99,7 +99,13 @@ For how to use the API, please refer to the link below.
 
 {% page-ref page="rest-api/v1/virtualhost/application/recording.md" %}
 
+### Split Recording
 
+Split recording methods provide **interval** and **schedule**.  The interval method splits files based on the accumulated recording time. The Schedule method then splits files according to scheduling options based on system time. The scheduling option is the same as the pattern used in crontab. However, only three options are used: seconds/minutes/hour.
+
+{% hint style="info" %}
+**interval** and **schedule** methods cannot be used simultaneously. 
+{% endhint %}
 
 ## Appendix A. Recorded File Information Specification
 
@@ -116,12 +122,13 @@ The following is a sample of an XML file that expresses information on a recorde
     <stream>stream_o</stream>
     <filePath><![CDATA[/home/dev/OvenMediaEngine/records/bcUCyJeKuOGnsah3_default_app_stream_o_20201204005351_20201204005405.ts]]></filePath>
     <recordBytes>8774737</recordBytes>
-    <recordTime>13816</recordTime>
+    <recordTime>60011</recordTime>
     <sequence>0</sequence>
-    <lastSequence>false</lastSequence>
+    <interval>60000</interval>
+    <lastSequence>true</lastSequence>
     <createdTime>2020-12-04T12:53:51.455+0900</createdTime>
     <startTime>2020-12-04T12:53:51.612+0900</startTime>
-    <finishTime>2020-12-04T12:54:05.473+0900</finishTime>
+    <finishTime>2020-12-04T12:54:51.473+0900</finishTime>
   </file>
   <file>
     <transactionId>bcUCyJeKuOGnsah3</transactionId>
@@ -131,12 +138,13 @@ The following is a sample of an XML file that expresses information on a recorde
     <stream>stream_o</stream>
     <filePath><![CDATA[/home/dev/OvenMediaEngine/records/bcUCyJeKuOGnsah3_default_app_stream_o_20201204005408_20201204005412.ts]]></filePath>
     <recordBytes>2285797</recordBytes>
-    <recordTime>3469</recordTime>
-    <sequence>1</sequence>
+    <recordTime>60012</recordTime>
+    <sequence>0</sequence>
+    <schedule>0 */1 *</schedule>
     <lastSequence>false</lastSequence>
-    <createdTime>2020-12-04T12:53:51.455+0900</createdTime>
-    <startTime>2020-12-04T12:54:08.629+0900</startTime>
-    <finishTime>2020-12-04T12:54:12.124+0900</finishTime>
+    <createdTime>2020-12-04T12:53:00.000+0900</createdTime>
+    <startTime>2020-12-04T12:53:00.000+0900</startTime>
+    <finishTime>2020-12-04T12:54:00.000+0900</finishTime>
   </file>
   <file>
     <transactionId>bcUCyJeKuOGnsah3</transactionId>
@@ -146,12 +154,13 @@ The following is a sample of an XML file that expresses information on a recorde
     <stream>stream_o</stream>
     <filePath><![CDATA[/home/dev/OvenMediaEngine/records/bcUCyJeKuOGnsah3_default_app_stream_o_20201204005415_20201204005422.ts]]></filePath>
     <recordBytes>4544626</recordBytes>
-    <recordTime>7009</recordTime>
-    <sequence>2</sequence>
+    <recordTime>60000</recordTime>
+    <sequence>1</sequence>
+    <schedule>0 */1 *</schedule>
     <lastSequence>true</lastSequence>
-    <createdTime>2020-12-04T12:53:51.455+0900</createdTime>
-    <startTime>2020-12-04T12:54:15.136+0900</startTime>
-    <finishTime>2020-12-04T12:54:22.144+0900</finishTime>
+    <createdTime>2020-12-04T12:54:00.000+0900</createdTime>
+    <startTime>2020-12-04T12:54:00.000+0900</startTime>
+    <finishTime>2020-12-04T12:55:00.000+0900</finishTime>
   </file>
 </files>
 ```
