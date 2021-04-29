@@ -6,6 +6,7 @@
 * [Live Source](live-source/README.md)
   * [RTMP](live-source/rtmp.md)
   * [WebRTC \(Beta\)](live-source/webrtc-beta.md)
+  * [SRT \(Beta\)](live-source/srt-beta.md)
   * [MPEG-2 TS](live-source/mpeg-2-ts-beta.md)
   * [RTSP Pull](live-source/rtsp-pull-beta.md)
 * [Transcoding](transcoding.md)
