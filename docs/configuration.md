@@ -64,9 +64,21 @@ The `Bind` is the configuration for the server port that will be used. Bind cons
 		<RTMP>
 			<Port>1935</Port>
 		</RTMP>
+		<SRT>
+				<Port>9999</Port>
+		</SRT>
 		<MPEGTS>
 			<Port>4000-4003,4004,4005/udp</Port>
 		</MPEGTS>
+		<WebRTC>
+			<Signalling>
+				<Port>3333</Port>
+			</Signalling>
+			<IceCandidates>
+					<TcpRelay>*:3478</TcpRelay>
+					<IceCandidate>*:10000-10005/udp</IceCandidate>
+			</IceCandidates>
+		</WebRTC>
 	</Providers>
 
 	<Publishers>
@@ -84,7 +96,7 @@ The `Bind` is the configuration for the server port that will be used. Bind cons
 				<Port>3333</Port>
 			</Signalling>
 			<IceCandidates>
-				<TcpRelay>Relay IP:Port</TcpRelay>
+				<TcpRelay>*:3478</TcpRelay>
 				<IceCandidate>*:10000-10005/udp</IceCandidate>
 			</IceCandidates>
 		</WebRTC>
@@ -107,8 +119,17 @@ The meaning of each element is shown in the following table:
       <td style="text-align:left">RTMP port for incoming RTMP stream.</td>
     </tr>
     <tr>
+      <td style="text-align:left">SRT</td>
+      <td style="text-align:left">SRT port for incoming SRT stream</td>
+    </tr>
+    <tr>
       <td style="text-align:left">MPEG-TS</td>
       <td style="text-align:left">MPEGTS ports for incoming MPEGTS/UDP stream.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">WebRTC</td>
+      <td style="text-align:left">Port for WebRTC. If you want more information on the WebRTC port, see
+        the <a href="live-source/webrtc-beta.md">WebRTC Ingest </a>and <a href="streaming/webrtc-publishing.md">WebRTC Streaming</a> chapters.</td>
     </tr>
     <tr>
       <td style="text-align:left">OVT</td>
@@ -125,11 +146,6 @@ The meaning of each element is shown in the following table:
     <tr>
       <td style="text-align:left">DASH</td>
       <td style="text-align:left">HTTP(s) port for MPEG-DASH streaming including Low-Latency MPEG-DASH.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">WebRTC</td>
-      <td style="text-align:left">Port for WebRTC. If you want more information on the WebRTC port, see
-        the <a href="streaming/webrtc-publishing.md">WebRTC Streaming</a> chapter.</td>
     </tr>
   </tbody>
 </table>
@@ -314,6 +330,8 @@ For more information about the OutputProfiles, please see the [Transcoding](tran
 <Application>
    <Providers>
       <RTMP/>
+      <WebRTC/>
+      <SRT/>
       <RTSPPull/>
       <OVT/>
       <MPEGTS>
@@ -356,7 +374,7 @@ If you want to learn more about WebRTC, visit the [WebRTC Streaming](streaming/w
 Finally, `Server.xml` is configured as follows:
 
 ```markup
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <Server version="8">
 	<Name>OvenMediaEngine</Name>
@@ -364,6 +382,7 @@ Finally, `Server.xml` is configured as follows:
 	<Type>origin</Type>
 	<!-- Specify IP address to bind (* means all IPs) -->
 	<IP>*</IP>
+
 	<!-- 
 	To get the public IP address(mapped address of stun) of the local server. 
 	This is useful when OME cannot obtain a public IP from an interface, such as AWS or docker environment. 
@@ -378,6 +397,7 @@ Finally, `Server.xml` is configured as follows:
 		<Managers>
 			<API>
 				<Port>48081</Port>
+				<WorkerCount>1</WorkerCount>
 			</API>
 		</Managers>
 		-->
@@ -385,7 +405,12 @@ Finally, `Server.xml` is configured as follows:
 		<Providers>
 			<RTMP>
 				<Port>1935</Port>
+				<!-- <WorkerCount>1</WorkerCount> -->
 			</RTMP>
+			<SRT>
+				<Port>9999</Port>
+				<!-- <WorkerCount>1</WorkerCount> -->
+			</SRT>
 			<MPEGTS>
 				<!--
 					Listen on port 4000~4005
@@ -393,35 +418,112 @@ Finally, `Server.xml` is configured as follows:
 				-->
 				<Port>4000-4004,4005/udp</Port>
 			</MPEGTS>
-		</Providers>
-
-		<Publishers>
-			<OVT>
-				<Port>9000</Port>
-			</OVT>
-			<HLS>
-				<Port>80</Port>
-				<!-- If you want to use TLS, specify the TLS port -->
-				<!-- <TLSPort>443</TLSPort> -->
-			</HLS>
-			<DASH>
-				<Port>80</Port>
-				<!-- If you want to use TLS, specify the TLS port -->
-				<!-- <TLSPort>443</TLSPort> -->
-			</DASH>
 			<WebRTC>
 				<Signalling>
 					<Port>3333</Port>
 					<!-- If you want to use TLS, specify the TLS port -->
 					<!-- <TLSPort>3334</TLSPort> -->
+					<!-- <WorkerCount>4</WorkerCount> -->
 				</Signalling>
+
 				<IceCandidates>
+					<!-- 
+						If you want to stream WebRTC over TCP, specify IP:Port for TURN server.
+						This uses the TURN protocol, which delivers the stream from the built-in TURN server to the player's TURN client over TCP. 
+						For detailed information, refer https://airensoft.gitbook.io/ovenmediaengine/v/0.11.1/streaming/webrtc-publishing#webrtc-over-tcp
+					-->
 					<TcpRelay>*:3478</TcpRelay>
 					<IceCandidate>*:10000-10005/udp</IceCandidate>
+
+					<!--
+						Sets the number of worker threads to use in TcpRelay
+						
+						<TcpRelayWorkerCount>4</TcpRelayWorkerCount>
+					-->
+				</IceCandidates>
+			</WebRTC>
+		</Providers>
+
+		<Publishers>
+			<OVT>
+				<Port>9000</Port>
+				<!-- <WorkerCount>1</WorkerCount> -->
+			</OVT>
+			<HLS>
+				<Port>80</Port>
+				<!-- If you want to use TLS, specify the TLS port -->
+				<!-- <TLSPort>443</TLSPort> -->
+				<!-- <WorkerCount>4</WorkerCount> -->
+			</HLS>
+			<DASH>
+				<Port>80</Port>
+				<!-- If you want to use TLS, specify the TLS port -->
+				<!-- <TLSPort>443</TLSPort> -->
+				<!-- <WorkerCount>4</WorkerCount> -->
+			</DASH>
+			<Thumbnail>
+				<Port>80</Port>
+				<!-- If you want to use TLS, specify the TLS port -->
+				<!-- <TLSPort>443</TLSPort> -->
+				<!-- <WorkerCount>4</WorkerCount> -->
+			</Thumbnail>
+			<WebRTC>
+				<Signalling>
+					<Port>3333</Port>
+					<!-- If you want to use TLS, specify the TLS port -->
+					<!-- <TLSPort>3334</TLSPort> -->
+					<!-- <WorkerCount>4</WorkerCount> -->
+				</Signalling>
+
+				<IceCandidates>
+					<!-- 
+						If you want to stream WebRTC over TCP, specify IP:Port for TURN server.
+						This uses the TURN protocol, which delivers the stream from the built-in TURN server to the player's TURN client over TCP. 
+						For detailed information, refer https://airensoft.gitbook.io/ovenmediaengine/v/0.11.1/streaming/webrtc-publishing#webrtc-over-tcp
+					-->
+					<TcpRelay>*:3478</TcpRelay>
+					<IceCandidate>*:10000-10005/udp</IceCandidate>
+
+					<!--
+						Sets the number of worker threads to use in TcpRelay
+						
+						<TcpRelayWorkerCount>4</TcpRelayWorkerCount>
+					-->
 				</IceCandidates>
 			</WebRTC>
 		</Publishers>
 	</Bind>
+
+	<!-- P2P works only in WebRTC -->
+	<!--
+	<P2P>
+		<MaxClientPeersPerHostPeer>2</MaxClientPeersPerHostPeer>
+	</P2P>
+	-->
+
+	<!--
+		Enable this configuration if you want to use API Server
+		
+		<AccessToken> is a token for authentication, and when you invoke the API, you must put "Basic base64encode(<AccessToken>)" in the "Authorization" header of HTTP request.
+		For example, if you set <AccessToken> to "ome-access-token", you must set "Basic b21lLWFjY2Vzcy10b2tlbg==" in the "Authorization" header.
+	-->
+	<!--
+	<Managers>
+		<Host>
+			<Names>
+				<Name>*</Name>
+			</Names>
+			<TLS>
+				<CertPath>path/to/file.crt</CertPath>
+				<KeyPath>path/to/file.key</KeyPath>
+				<ChainCertPath>path/to/file.crt</ChainCertPath>
+			</TLS>
+		</Host>
+		<API>
+			<AccessToken>ome-access-token</AccessToken>
+		</API>
+	</Managers>
+	-->
 
 	<VirtualHosts>
 		<!-- You can use wildcard like this to include multiple XMLs -->
@@ -523,10 +625,28 @@ Finally, `Server.xml` is configured as follows:
 								-->
 							</Encodes>
 						</OutputProfile>
+
+						<!-- For thunmnail -->
+						<!--
+						<OutputProfile>
+							<Name>default_stream</Name>
+							<OutputStreamName>${OriginStreamName}_preview</OutputStreamName>
+							<Encodes>
+								<Image>
+									<Codec>png</Codec>
+									<Framerate>1</Framerate>
+									<Width>1280</Width>
+									<Height>720</Height>
+								</Image>
+							</Encodes>
+						</OutputProfile>
+						-->
 					</OutputProfiles>
 					<Providers>
 						<OVT />
+						<WebRTC />
 						<RTMP />
+						<SRT />
 						<MPEGTS>
 							<StreamMap>
 								<!--
@@ -544,11 +664,17 @@ Finally, `Server.xml` is configured as follows:
 							</StreamMap>
 						</MPEGTS>
 						<RTSPPull />
+						<WebRTC>
+							<Timeout>30000</Timeout>
+						</WebRTC>
 					</Providers>
 					<Publishers>
+						<SessionLoadBalancingThreadCount>8</SessionLoadBalancingThreadCount>
 						<OVT />
 						<WebRTC>
 							<Timeout>30000</Timeout>
+							<Rtx>true</Rtx>
+							<Ulpfec>true</Ulpfec>
 						</WebRTC>
 						<HLS>
 							<SegmentDuration>5</SegmentDuration>
@@ -570,6 +696,13 @@ Finally, `Server.xml` is configured as follows:
 								<Url>*</Url>
 							</CrossDomains>
 						</LLDASH>
+						<!--
+						<Thumbnail>
+							<CrossDomains>
+								<Url>*</Url>
+							</CrossDomains>	
+						</Thumbnail>
+						-->
 					</Publishers>
 				</Application>
 			</Applications>

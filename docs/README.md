@@ -8,9 +8,10 @@ Our goal is to make it easier for you to build a stable broadcasting/streaming s
 
 ## Features
 
-* RTMP Push, MPEG2-TS Push, RTSP Pull Input
+* Ingest
+  * WebRTC Push, RTMP Push, SRT Push, MPEG-2 TS Push, RTSP Pull
 * WebRTC sub-second streaming
-  * WebRTC over TCP \(embedded TURN server\)
+  * WebRTC over TCP \(with embedded TURN server\)
   * Embedded WebRTC Signalling Server \(WebSocket based\)
   * ICE \(Interactive Connectivity Establishment\)
   * DTLS \(Datagram Transport Layer Security\)
@@ -23,7 +24,9 @@ Our goal is to make it easier for you to build a stable broadcasting/streaming s
 * Origin-Edge structure
 * Monitoring
 * Beta
-  * Recording, Push Publishing\(re-streaming\), Thumbnail
+  * File Recording
+  * RTMP Push Publishing\(re-streaming\)
+  * Thumbnail
   * REST API
 * Experiment
   * P2P Traffic Distribution

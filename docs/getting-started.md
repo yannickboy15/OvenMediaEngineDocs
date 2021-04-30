@@ -6,7 +6,7 @@ OvenMediaEngine supports the Docker image from [AirenSoft's Docker Hub](https://
 
 ```text
 docker run -d \
--p 1935:1935 -p 4000-4005:4000-4005/udp -p 3333:3333 -p 3478:3478 -p 8080:8080 -p 9000:9000 -p 10000-10010:10000-10010/udp \
+-p 1935:1935 -p 4000-4005:4000-4005/udp -p 3333:3333 -p 3478:3478 -p 8080:8080 -p 9000:9000 -p 9999:9999/udp -p 10006-10010:10006-10010/udp \
 airensoft/ovenmediaengine:dev
 ```
 
@@ -18,6 +18,7 @@ You can set the following environment variables.
 | :--- | :--- |
 | OME\_ORIGIN\_PORT | 9000 |
 | OME\_RTMP\_PROV\_PORT | 1935 |
+| OME\_SRT\_PROV\_PORT | 9999/udp |
 | OME\_MPEGTS\_PROV\_PORT | 4000-4005/udp |
 | OME\_HLS\_PUB\_PORT | 8080 |
 | OME\_DASH\_PUB\_PORT | 8080 |
@@ -100,18 +101,20 @@ The default configuration uses the following ports, so you need to open it in yo
 | Port | Purpose |
 | :--- | :--- |
 | 1935/TCP | RTMP Input |
+| 9999/UDP | SRT Input |
 | 4000-4005/UDP | MPEG-2 TS Input |
 | 9000/TCP | Origin Server \(OVT\) |
 | 80/TCP | HLS & MPEG-Dash Streaming |
-| 3333/TCP | WebRTC Signalling |
-| 3478/TCP | WebRTC TCP relay \(TURN Server\) |
-| 10000 - 10010/UDP | WebRTC Ice candidate |
+| 3333/TCP | WebRTC Signalling \(both ingest and streaming\) |
+| 3478/TCP | WebRTC TCP relay \(TURN Server, both ingest and streaming\) |
+| 10000 - 10010/UDP | WebRTC Ice candidate \(both ingest and streaming\) |
 
 You can open firewall ports as in the following example:
 
 ```bash
 $ sudo firewall-cmd --add-port=80/tcp
 $ sudo firewall-cmd --add-port=1935/tcp
+$ sudo firewall-cmd --add-port=9999/udp
 $ sudo firewall-cmd --add-port=4000-4005/udp
 $ sudo firewall-cmd --add-port=3333/tcp
 $ sudo firewall-cmd --add-port=3478/tcp
