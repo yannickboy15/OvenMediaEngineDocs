@@ -7,7 +7,7 @@ OvenMediaEngine supports the Docker image from [AirenSoft's Docker Hub](https://
 ```text
 docker run -d \
 -p 1935:1935 -p 4000-4005:4000-4005/udp -p 3333:3333 -p 3478:3478 -p 8080:8080 -p 9000:9000 -p 10000-10010:10000-10010/udp \
-airensoft/ovenmediaengine:latest
+airensoft/ovenmediaengine:0.11.2
 ```
 
 You can set the following environment variables.
