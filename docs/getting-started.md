@@ -7,7 +7,7 @@ OvenMediaEngine supports the Docker image from [AirenSoft's Docker Hub](https://
 ```text
 docker run -d \
 -p 1935:1935 -p 4000-4005:4000-4005/udp -p 3333:3333 -p 3478:3478 -p 8080:8080 -p 9000:9000 -p 10000-10010:10000-10010/udp \
-airensoft/ovenmediaengine:dev
+airensoft/ovenmediaengine:0.11.3
 ```
 
 You can set the following environment variables.
@@ -32,8 +32,8 @@ You can set the following environment variables.
 OvenMediaEngine can work with a variety of open-sources and libraries. First, install them on your clean Linux machine as described below. We think that OME can support most Linux packages, but the tested platforms we use are Ubuntu 18+, Fedora 28+, and CentOS 7+.
 
 ```bash
-(curl -LOJ https://github.com/AirenSoft/OvenMediaEngine/archive/master.tar.gz && tar xvfz OvenMediaEngine-master.tar.gz)
-OvenMediaEngine-master/misc/prerequisites.sh
+(curl -LOJ https://github.com/AirenSoft/OvenMediaEngine/archive/v0.11.3.tar.gz && tar xvfz OvenMediaEngine-0.11.3.tar.gz)
+OvenMediaEngine-0.11.3/misc/prerequisites.sh
 ```
 
 {% hint style="info" %}
@@ -48,7 +48,7 @@ You can build the OvenMediaEngine source using the following command:
 {% tab title="Ubuntu 18" %}
 ```bash
 sudo apt-get update
-cd OvenMediaEngine-master/src
+cd OvenMediaEngine-0.11.3/src
 make release
 sudo make install
 systemctl start ovenmediaengine
@@ -60,7 +60,7 @@ systemctl enable ovenmediaengine.service 
 {% tab title="Fedora 28" %}
 ```bash
 sudo dnf update
-cd OvenMediaEngine-master/src
+cd OvenMediaEngine-0.11.3/src
 make release
 sudo make install
 systemctl start ovenmediaengine
@@ -73,7 +73,7 @@ systemctl enable ovenmediaengine.service
 ```bash
 sudo yum update
 source scl_source enable devtoolset-7
-cd OvenMediaEngine-master/src
+cd OvenMediaEngine-0.11.3/src
 make release
 sudo make install
 systemctl start ovenmediaengine
