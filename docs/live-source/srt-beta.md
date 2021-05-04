@@ -41,13 +41,17 @@ OvenMediaEngine classifies each stream using SRT's streamid. This means that unl
 
 Therefore, in order for the SRT encoder to transmit a stream to OvenMediaEngine, the following information must be included in the streamid.
 
-> streamid = srt://{host}\[:port\]/{app name}/{stream name}\[?query=value\]
+> streamid = percent\_encoding\("srt://{host}\[:port\]/{app name}/{stream name}\[?query=value\]"\)
+
+{% hint style="warning" %}
+The **streamid** contains the URL format, so it must be **percent encoded**
+{% endhint %}
 
 ### OBS Studio
 
 OBS Studio 25.0 or later supports SRT. Please refer to the [OBS official documentation](https://obsproject.com/wiki/Streaming-With-SRT-Protocol) for more information. Enter the address of OvenMediaEngine in OBS Studio's Server as follows: When using SRT in OBS, you can leave the Stream Key blank.
 
-`srt://ip:port?streamid=srt://{domain or IP address}[:Port]/{App name}/{Stream name}`
+`srt://ip:port?streamid=srt%3A//{domain or IP address}[%3APort]/{App name}/{Stream name}%3Fquery%3Dvalue`
 
-![](../.gitbook/assets/image%20%2813%29.png)
+![](../.gitbook/assets/image%20%2821%29.png)
 
