@@ -39,7 +39,7 @@ There are various encoders that support SRT such as FFMPEG, OBS Studio, and srt-
 
 OvenMediaEngine classifies each stream using SRT's streamid. This means that unlike MEPG-TS/udp, OvenMediaEngine can receive multiple SRT streams through one port. For more information on streamid, see [Haivision's official documentation](https://github.com/Haivision/srt/blob/master/docs/features/access-control.md).
 
-Therefore, in order for the SRT encoder to transmit a stream to OvenMediaEngine, the following information must be included in the streamid.
+Therefore, in order for the SRT encoder to transmit a stream to OvenMediaEngine, the following information must be included in the streamid as [percent encoded](https://tools.ietf.org/html/rfc3986#section-2.1).
 
 > streamid = percent\_encoding\("srt://{host}\[:port\]/{app name}/{stream name}\[?query=value\]"\)
 
