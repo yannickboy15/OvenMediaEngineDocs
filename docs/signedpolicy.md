@@ -95,6 +95,10 @@ Base64URL.Encode(
 {% hint style="danger" %}
 The URL entered into HMAC to generate the Signature must include :port. 
 
+{% hint style="danger" %}
+When using SignedPolicy with SRT providers, only use the streamid portion of the URL, e.g.
+srt://myserver:9999?streamid=**srt://myserver:9999/app/stream?policy=abc123**
+
 When creating a signature, you cannot omit the default port such as http port 80, https port 443, or rtmp port 1935. This is because when OvenMediaEngine creates a signature for checking the signature, it is created by putting the port value.
 {% endhint %}
 
