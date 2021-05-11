@@ -16,10 +16,10 @@ Policy is in json format and provides the following properties.
 
 ```text
 {
-	"url_activate":1399711581,									
-	"url_expire":1399721581,									
-	"stream_expire":1399821581,									
-	"allow_ip":"192.168.100.5/32"
+    "url_activate":1399711581,                                    
+    "url_expire":1399721581,                                    
+    "stream_expire":1399821581,                                    
+    "allow_ip":"192.168.100.5/32"
 }
 ```
 
@@ -93,13 +93,13 @@ Base64URL.Encode(
 ```
 
 {% hint style="danger" %}
-The URL entered into HMAC to generate the Signature must include :port. 
-
-{% hint style="danger" %}
-When using SignedPolicy with SRT providers, only use the streamid portion of the URL, e.g.
-srt://myserver:9999?streamid=**srt://myserver:9999/app/stream?policy=abc123**
+The URL entered into HMAC to generate the Signature must include :port.
 
 When creating a signature, you cannot omit the default port such as http port 80, https port 443, or rtmp port 1935. This is because when OvenMediaEngine creates a signature for checking the signature, it is created by putting the port value.
+{% endhint %}
+
+{% hint style="danger" %}
+When using SignedPolicy with SRT providers, only use the **streamid** portion of the URL, e.g. srt://myserver:9999?streamid=**srt://myserver:9999/app/stream?policy=abc123**
 {% endhint %}
 
 ## Configuration
@@ -108,16 +108,16 @@ To enable SignedPolicy, you need to add the following &lt;SingedPolicy&gt; setti
 
 ```text
 <VirtualHost>
-	<SignedPolicy>
-		<PolicyQueryKeyName>policy</PolicyQueryKeyName>
-		<SignatureQueryKeyName>signature</SignatureQueryKeyName>
-		<SecretKey>aKq#1kj</SecretKey>
-		
-		<Enables>
-			<Providers>rtmp</Providers>
-			<Publishers>webrtc,hls,dash,lldash</Publishers>
-		</Enables>
-	</SignedPolicy>
+    <SignedPolicy>
+        <PolicyQueryKeyName>policy</PolicyQueryKeyName>
+        <SignatureQueryKeyName>signature</SignatureQueryKeyName>
+        <SecretKey>aKq#1kj</SecretKey>
+
+        <Enables>
+            <Providers>rtmp</Providers>
+            <Publishers>webrtc,hls,dash,lldash</Publishers>
+        </Enables>
+    </SignedPolicy>
 </VirtualHost>
 ```
 
@@ -170,7 +170,7 @@ eyJ1cmxfZXhwaXJlIjoxMzk5NzIxNTgxfQ
 
 Policy encoded with Base64URL is added as a query string to the existing streaming URL. \(The query string key is set in Server.xml.\)
 
-```
+```text
 ws://192.168.0.100:3333/app/stream?policy=eyJ1cmxfZXhwaXJlIjoxMzk5NzIxNTgxfQ
 ```
 
@@ -204,7 +204,7 @@ ws://192.168.0.100/app/stream?policy=eyJ1cmxfZXhwaXJlIjoxMzk5NzIxNTgxfQ&signatur
 
 ### Applying SignedPolicy in OBS
 
-Generate SingedPolicy URL with the script. 
+Generate SingedPolicy URL with the script.
 
 ![](.gitbook/assets/image%20%2823%29.png)
 
