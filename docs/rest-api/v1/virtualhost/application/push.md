@@ -18,7 +18,7 @@ Request Example:
   },  
   "protocol": "rtmp",  
   "url":"rtmp://{host}[:port]/{appName}",  
-  "streamkey":"{streamName}"  
+  "streamKey":"{streamName}"  
 }`
 {% endapi-method-description %}
 
