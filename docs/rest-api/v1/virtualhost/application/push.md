@@ -18,7 +18,7 @@ Request Example:
   },  
   "protocol": "rtmp",  
   "url":"rtmp://{host}[:port]/{appName}",  
-  "streamkey":"{streamName}"  
+  "streamKey":"{streamName}"  
 }`
 {% endapi-method-description %}
 
@@ -102,7 +102,7 @@ Destination stream key
           102
         ]
       },
-      "stream_key": "2u5w-rt7q-tepj-91qa-4yft",
+      "streamKey": "2u5w-rt7q-tepj-91qa-4yft",
       "totalsentBytes": 0,
       "totalsentTime": 0,
       "url": "rtmp://a.rtmp.youtube.com/live2",
@@ -205,7 +205,7 @@ Unique identifier for push management
           102
         ]
       },
-      "stream_key": "2u5w-rt7q-tepj-91qa-4yft",
+      "streamKey": "2u5w-rt7q-tepj-91qa-4yft",
       "totalsentBytes": 32841631,
       "totalsentTime": 601000,
       "url": "rtmp://a.rtmp.youtube.com/live2",
@@ -304,7 +304,7 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
           102
         ]
       },
-      "stream_key": "2u5w-rt7q-tepj-91qa-4yft",
+      "streamKey": "2u5w-rt7q-tepj-91qa-4yft",
       "totalsentBytes": 0,
       "totalsentTime": 0,
       "url": "rtmp://a.rtmp.youtube.com/live2",
@@ -328,7 +328,7 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
           102
         ]
       },
-      "stream_key": "2u5w-rt7q-tepj-91qa-4yft",
+      "streamKey": "2u5w-rt7q-tepj-91qa-4yft",
       "totalsentBytes": 0,
       "totalsentTime": 0,
       "url": "rtmp://a.rtmp.youtube.com/live2",
