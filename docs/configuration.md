@@ -158,7 +158,7 @@ HLS and DASH can be set to the same port, but all other protocols have to use di
 
 `VirtualHosts` are a way to run more than one streaming server on a single machine. OvenMediaEngine supports IP-based virtual host and Domain-based virtual host. "IP-based" means that you can separate streaming servers into multiples by setting different IP addresses, and "Domain-based" means that even if the streaming servers use the same IP address, you can split the streaming servers into multiples by setting different domain names.
 
-`VirtualHosts`consist of `Domain`, `Origins`, and `Applications`.
+`VirtualHosts`consist of `Name`, `Host`, `Origins`, `SignedPolicy`, and `Applications`.
 
 ```markup
 <?xml version="1.0" encoding="UTF-8"?>
@@ -254,7 +254,7 @@ To run the Edge server, Origin creates application and stream if there isn't tho
 `<Application>` consists of various elements that can define the operation of the stream, including Stream input, Encoding, and Stream output. In other words, you can create as many `<Application>` as you like and build various streaming environments.
 
 ```markup
-<Host>
+<VirtualHost>
     ...
     <Applications>
         <Application>
@@ -264,7 +264,7 @@ To run the Edge server, Origin creates application and stream if there isn't tho
             ...
         </Application>
     </Applications>
-</Host>
+</VirtualHost>
 ```
 
 `<Application>` needs to set `<Name>` and `<Type>` as follows:
@@ -274,7 +274,7 @@ To run the Edge server, Origin creates application and stream if there isn't tho
     <Name>app</Name>
     <Type>live</Type>
     <OutputProfiles> ... </OutputProfiles>
-    <Provider> ... </Provider>
+    <Providers> ... </Providers>
     <Publishers> ... </Publishers>
 </Application>
 ```
@@ -626,7 +626,7 @@ Finally, `Server.xml` is configured as follows:
 							</Encodes>
 						</OutputProfile>
 
-						<!-- For thunmnail -->
+						<!-- For thumbnail -->
 						<!--
 						<OutputProfile>
 							<Name>default_stream</Name>
