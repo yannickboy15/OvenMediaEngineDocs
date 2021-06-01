@@ -6,7 +6,7 @@ OvenMediaEngine can generate thumbnails from live streams. This allows you to or
 
 ### Bind
 
-Thumbnails are published via HTTP\(s\). Set the port for thumbnails as follows. Ports for thumbnails can use ports such as HLS and DASH.
+Thumbnails are published via HTTP\(s\). Set the port for thumbnails as follows. Thumbnail publisher can use the same port number as HLS and DASH.
 
 ```markup
 <Bind>

@@ -56,51 +56,51 @@ If OvenMediaEngine obtains the public IP through communication with the set stun
 
 ## Bind
 
-The `Bind` is the configuration for the server port that will be used. Bind consists of `Providers` and `Publishers`. The Providers are the server for stream input, and the Publishers are the server for streaming. 
+The `Bind` is the configuration for the server port that will be used. Bind consists of `Providers` and `Publishers`. The Providers are the server for stream input, and the Publishers are the server for streaming.
 
 ```markup
 <Bind>
-	<Providers>
-		<RTMP>
-			<Port>1935</Port>
-		</RTMP>
-		<SRT>
-				<Port>9999</Port>
-		</SRT>
-		<MPEGTS>
-			<Port>4000-4003,4004,4005/udp</Port>
-		</MPEGTS>
-		<WebRTC>
-			<Signalling>
-				<Port>3333</Port>
-			</Signalling>
-			<IceCandidates>
-					<TcpRelay>*:3478</TcpRelay>
-					<IceCandidate>*:10000-10005/udp</IceCandidate>
-			</IceCandidates>
-		</WebRTC>
-	</Providers>
+    <Providers>
+        <RTMP>
+            <Port>1935</Port>
+        </RTMP>
+        <SRT>
+                <Port>9999</Port>
+        </SRT>
+        <MPEGTS>
+            <Port>4000-4003,4004,4005/udp</Port>
+        </MPEGTS>
+        <WebRTC>
+            <Signalling>
+                <Port>3333</Port>
+            </Signalling>
+            <IceCandidates>
+                    <TcpRelay>*:3478</TcpRelay>
+                    <IceCandidate>*:10000-10005/udp</IceCandidate>
+            </IceCandidates>
+        </WebRTC>
+    </Providers>
 
-	<Publishers>
-		<OVT>
-			<Port>9000</Port>
-		</OVT>
-		<HLS>
-			<Port>80</Port>
-		</HLS>
-		<DASH>
-			<Port>80</Port>
-		</DASH>
-		<WebRTC>
-			<Signalling>
-				<Port>3333</Port>
-			</Signalling>
-			<IceCandidates>
-				<TcpRelay>*:3478</TcpRelay>
-				<IceCandidate>*:10000-10005/udp</IceCandidate>
-			</IceCandidates>
-		</WebRTC>
-	</Publishers>
+    <Publishers>
+        <OVT>
+            <Port>9000</Port>
+        </OVT>
+        <HLS>
+            <Port>80</Port>
+        </HLS>
+        <DASH>
+            <Port>80</Port>
+        </DASH>
+        <WebRTC>
+            <Signalling>
+                <Port>3333</Port>
+            </Signalling>
+            <IceCandidates>
+                <TcpRelay>*:3478</TcpRelay>
+                <IceCandidate>*:10000-10005/udp</IceCandidate>
+            </IceCandidates>
+        </WebRTC>
+    </Publishers>
 </Bind>
 ```
 
@@ -129,7 +129,7 @@ The meaning of each element is shown in the following table:
     <tr>
       <td style="text-align:left">WebRTC</td>
       <td style="text-align:left">Port for WebRTC. If you want more information on the WebRTC port, see
-        the <a href="live-source/webrtc-beta.md">WebRTC Ingest </a>and <a href="streaming/webrtc-publishing.md">WebRTC Streaming</a> chapters.</td>
+        the <a href="live-source/webrtc-beta.md">WebRTC Ingest</a> and <a href="streaming/webrtc-publishing.md">WebRTC Streaming</a> chapters.</td>
     </tr>
     <tr>
       <td style="text-align:left">OVT</td>
@@ -151,7 +151,7 @@ The meaning of each element is shown in the following table:
 </table>
 
 {% hint style="info" %}
-HLS and DASH can be set to the same port, but all other protocols have to use different ports. The ability for all protocols to use the same port will be updated in the future. 
+HLS and DASH can be set to the same port, but all other protocols have to use different ports. The ability for all protocols to use the same port will be updated in the future.
 {% endhint %}
 
 ## Virtual Host
@@ -170,15 +170,15 @@ HLS and DASH can be set to the same port, but all other protocols have to use di
             <Host>
             ...
             </Host>
-            
+
             <Origins>
             ...
             </Origins>
-            
+
             <SignedPolicy>
             ...
             </SignedPolicy>
-            
+
             <Applications>
             ...
             </Applications>
@@ -189,18 +189,18 @@ HLS and DASH can be set to the same port, but all other protocols have to use di
 
 ### Host
 
-The Domain has `Names` and TLS. Names can be either a domain address or an IP address. Setting \* means it allows all domains and IP addresses. 
+The Domain has `Names` and TLS. Names can be either a domain address or an IP address. Setting \* means it allows all domains and IP addresses.
 
 ```markup
 <Host>
-		<Names>
-			<!-- Domain names
-			<Name>stream1.airensoft.com</Name>
-			<Name>stream2.airensoft.com</Name>
-			<Name>*.sub.airensoft.com</Name>
-			-->
-			<Name>*</Name>
-		</Names>
+        <Names>
+            <!-- Domain names
+            <Name>stream1.airensoft.com</Name>
+            <Name>stream2.airensoft.com</Name>
+            <Name>*.sub.airensoft.com</Name>
+            -->
+            <Name>*</Name>
+        </Names>
 </Host>
 ```
 
@@ -210,42 +210,42 @@ SignedPolicy is a module that limits the user's privileges and time. For example
 
 ### Origins
 
-Origins \(also we called OriginMap\) are a feature to pull streams from external servers. It now supports OVT and RTSP for the pulling protocols. OVT is a protocol defined by OvenMediaEngine for Origin-Edge communication. It allows OvenMediaEngine to relay a stream from other OvenMediaEngines that have OVP Publisher turned on. Using RTSP, OvenMediaEngine pulls a stream from an RTSP server and creates a stream. RTSP stream from external servers can stream by WebRTC, HLS, and MPEG-DASH. 
+Origins \(also we called OriginMap\) are a feature to pull streams from external servers. It now supports OVT and RTSP for the pulling protocols. OVT is a protocol defined by OvenMediaEngine for Origin-Edge communication. It allows OvenMediaEngine to relay a stream from other OvenMediaEngines that have OVP Publisher turned on. Using RTSP, OvenMediaEngine pulls a stream from an RTSP server and creates a stream. RTSP stream from external servers can stream by WebRTC, HLS, and MPEG-DASH.
 
 The Origin has `Location` and `Pass` elements. Location is a URI pattern for incoming requests. If the incoming URL request matches Location, OvenMediaEngine pulls the stream according to a Pass element. In the Pass element, you can set the origin stream's protocol and URLs.
 
-To run the Edge server, Origin creates application and stream if there isn't those when user request. For more learn about Origin-Edge, see the  [Live Source](live-source/) chapter.
+To run the Edge server, Origin creates application and stream if there isn't those when user request. For more learn about Origin-Edge, see the [Live Source](live-source/) chapter.
 
 ```markup
 <Origins>
-	<Origin>
-		<Location>/app/stream</Location>
-		<Pass>
-			<Scheme>ovt</Scheme>
-			<Urls><Url>origin.com:9000/app/stream_720p</Url></Urls>
-		</Pass>
-	</Origin>
-	<Origin>
-		<Location>/app/</Location>
-		<Pass>
-			<Scheme>ovt</Scheme>
-			<Urls><Url>origin.com:9000/app/</Url></Urls>
-		</Pass>
-	</Origin>
-	<Origin>
-		<Location>/rtsp/stream</Location>
-		<Pass>
-			<Scheme>rtsp</Scheme>
-			<Urls><Url>rtsp-server.com:554/</Url></Urls>
-		</Pass>
-	</Origin>
-	<Origin>
-		<Location>/</Location>
-		<Pass>
-			<Scheme>ovt</Scheme>
-			<Urls><Url>origin2.com:9000/</Url></Urls>
-		</Pass>
-	</Origin>
+    <Origin>
+        <Location>/app/stream</Location>
+        <Pass>
+            <Scheme>ovt</Scheme>
+            <Urls><Url>origin.com:9000/app/stream_720p</Url></Urls>
+        </Pass>
+    </Origin>
+    <Origin>
+        <Location>/app/</Location>
+        <Pass>
+            <Scheme>ovt</Scheme>
+            <Urls><Url>origin.com:9000/app/</Url></Urls>
+        </Pass>
+    </Origin>
+    <Origin>
+        <Location>/rtsp/stream</Location>
+        <Pass>
+            <Scheme>rtsp</Scheme>
+            <Urls><Url>rtsp-server.com:554/</Url></Urls>
+        </Pass>
+    </Origin>
+    <Origin>
+        <Location>/</Location>
+        <Pass>
+            <Scheme>ovt</Scheme>
+            <Urls><Url>origin2.com:9000/</Url></Urls>
+        </Pass>
+    </Origin>
 </Origins>
 ```
 
@@ -289,34 +289,34 @@ To run the Edge server, Origin creates application and stream if there isn't tho
 ```markup
 <Application>
     <OutputProfiles>
-			<OutputProfile>
-				<Name>bypass_stream</Name>
-				<OutputStreamName>${OriginStreamName}</OutputStreamName>
-				<Encodes>
-					<Audio>
-						<Bypass>true</Bypass>
-					</Audio>
-					<Video>
-						<Bypass>true</Bypass>
-					</Video>
-					<Audio>
-						<Codec>opus</Codec>
-						<Bitrate>128000</Bitrate>
-						<Samplerate>48000</Samplerate>
-						<Channel>2</Channel>
-					</Audio>
-					<!-- 							
-					<Video>
-						<Codec>vp8</Codec>
-						<Bitrate>1024000</Bitrate>
-						<Framerate>30</Framerate>
-						<Width>1280</Width>
-						<Height>720</Height>
-					</Video>								
-					-->
-				</Encodes>
-			</OutputProfile>
-		</OutputProfiles>
+            <OutputProfile>
+                <Name>bypass_stream</Name>
+                <OutputStreamName>${OriginStreamName}</OutputStreamName>
+                <Encodes>
+                    <Audio>
+                        <Bypass>true</Bypass>
+                    </Audio>
+                    <Video>
+                        <Bypass>true</Bypass>
+                    </Video>
+                    <Audio>
+                        <Codec>opus</Codec>
+                        <Bitrate>128000</Bitrate>
+                        <Samplerate>48000</Samplerate>
+                        <Channel>2</Channel>
+                    </Audio>
+                    <!--                             
+                    <Video>
+                        <Codec>vp8</Codec>
+                        <Bitrate>1024000</Bitrate>
+                        <Framerate>30</Framerate>
+                        <Width>1280</Width>
+                        <Height>720</Height>
+                    </Video>                                
+                    -->
+                </Encodes>
+            </OutputProfile>
+        </OutputProfiles>
 </Application>
 ```
 
@@ -324,7 +324,7 @@ For more information about the OutputProfiles, please see the [Transcoding](tran
 
 #### Providers
 
-`Providers` ingest streams that come from a media source. 
+`Providers` ingest streams that come from a media source.
 
 ```markup
 <Application>
@@ -377,337 +377,337 @@ Finally, `Server.xml` is configured as follows:
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Server version="8">
-	<Name>OvenMediaEngine</Name>
-	<!-- Host type (origin/edge) -->
-	<Type>origin</Type>
-	<!-- Specify IP address to bind (* means all IPs) -->
-	<IP>*</IP>
+    <Name>OvenMediaEngine</Name>
+    <!-- Host type (origin/edge) -->
+    <Type>origin</Type>
+    <!-- Specify IP address to bind (* means all IPs) -->
+    <IP>*</IP>
 
-	<!-- 
-	To get the public IP address(mapped address of stun) of the local server. 
-	This is useful when OME cannot obtain a public IP from an interface, such as AWS or docker environment. 
-	If this is successful, you can use ${PublicIP} in your settings.
-	-->
-	<StunServer>stun.l.google.com:19302</StunServer>
+    <!-- 
+    To get the public IP address(mapped address of stun) of the local server. 
+    This is useful when OME cannot obtain a public IP from an interface, such as AWS or docker environment. 
+    If this is successful, you can use ${PublicIP} in your settings.
+    -->
+    <StunServer>stun.l.google.com:19302</StunServer>
 
-	<!-- Settings for the ports to bind -->
-	<Bind>
-		<!-- Enable this configuration if you want to use API Server -->
-		<!--
-		<Managers>
-			<API>
-				<Port>48081</Port>
-				<WorkerCount>1</WorkerCount>
-			</API>
-		</Managers>
-		-->
+    <!-- Settings for the ports to bind -->
+    <Bind>
+        <!-- Enable this configuration if you want to use API Server -->
+        <!--
+        <Managers>
+            <API>
+                <Port>48081</Port>
+                <WorkerCount>1</WorkerCount>
+            </API>
+        </Managers>
+        -->
 
-		<Providers>
-			<RTMP>
-				<Port>1935</Port>
-				<!-- <WorkerCount>1</WorkerCount> -->
-			</RTMP>
-			<SRT>
-				<Port>9999</Port>
-				<!-- <WorkerCount>1</WorkerCount> -->
-			</SRT>
-			<MPEGTS>
-				<!--
-					Listen on port 4000~4005
-					This is just a demonstration to show that you can configure the port in several ways
-				-->
-				<Port>4000-4004,4005/udp</Port>
-			</MPEGTS>
-			<WebRTC>
-				<Signalling>
-					<Port>3333</Port>
-					<!-- If you want to use TLS, specify the TLS port -->
-					<!-- <TLSPort>3334</TLSPort> -->
-					<!-- <WorkerCount>4</WorkerCount> -->
-				</Signalling>
+        <Providers>
+            <RTMP>
+                <Port>1935</Port>
+                <!-- <WorkerCount>1</WorkerCount> -->
+            </RTMP>
+            <SRT>
+                <Port>9999</Port>
+                <!-- <WorkerCount>1</WorkerCount> -->
+            </SRT>
+            <MPEGTS>
+                <!--
+                    Listen on port 4000~4005
+                    This is just a demonstration to show that you can configure the port in several ways
+                -->
+                <Port>4000-4004,4005/udp</Port>
+            </MPEGTS>
+            <WebRTC>
+                <Signalling>
+                    <Port>3333</Port>
+                    <!-- If you want to use TLS, specify the TLS port -->
+                    <!-- <TLSPort>3334</TLSPort> -->
+                    <!-- <WorkerCount>4</WorkerCount> -->
+                </Signalling>
 
-				<IceCandidates>
-					<!-- 
-						If you want to stream WebRTC over TCP, specify IP:Port for TURN server.
-						This uses the TURN protocol, which delivers the stream from the built-in TURN server to the player's TURN client over TCP. 
-						For detailed information, refer https://airensoft.gitbook.io/ovenmediaengine/v/0.11.1/streaming/webrtc-publishing#webrtc-over-tcp
-					-->
-					<TcpRelay>*:3478</TcpRelay>
-					<IceCandidate>*:10000-10005/udp</IceCandidate>
+                <IceCandidates>
+                    <!-- 
+                        If you want to stream WebRTC over TCP, specify IP:Port for TURN server.
+                        This uses the TURN protocol, which delivers the stream from the built-in TURN server to the player's TURN client over TCP. 
+                        For detailed information, refer https://airensoft.gitbook.io/ovenmediaengine/v/0.11.1/streaming/webrtc-publishing#webrtc-over-tcp
+                    -->
+                    <TcpRelay>*:3478</TcpRelay>
+                    <IceCandidate>*:10000-10005/udp</IceCandidate>
 
-					<!--
-						Sets the number of worker threads to use in TcpRelay
-						
-						<TcpRelayWorkerCount>4</TcpRelayWorkerCount>
-					-->
-				</IceCandidates>
-			</WebRTC>
-		</Providers>
+                    <!--
+                        Sets the number of worker threads to use in TcpRelay
 
-		<Publishers>
-			<OVT>
-				<Port>9000</Port>
-				<!-- <WorkerCount>1</WorkerCount> -->
-			</OVT>
-			<HLS>
-				<Port>80</Port>
-				<!-- If you want to use TLS, specify the TLS port -->
-				<!-- <TLSPort>443</TLSPort> -->
-				<!-- <WorkerCount>4</WorkerCount> -->
-			</HLS>
-			<DASH>
-				<Port>80</Port>
-				<!-- If you want to use TLS, specify the TLS port -->
-				<!-- <TLSPort>443</TLSPort> -->
-				<!-- <WorkerCount>4</WorkerCount> -->
-			</DASH>
-			<Thumbnail>
-				<Port>80</Port>
-				<!-- If you want to use TLS, specify the TLS port -->
-				<!-- <TLSPort>443</TLSPort> -->
-				<!-- <WorkerCount>4</WorkerCount> -->
-			</Thumbnail>
-			<WebRTC>
-				<Signalling>
-					<Port>3333</Port>
-					<!-- If you want to use TLS, specify the TLS port -->
-					<!-- <TLSPort>3334</TLSPort> -->
-					<!-- <WorkerCount>4</WorkerCount> -->
-				</Signalling>
+                        <TcpRelayWorkerCount>4</TcpRelayWorkerCount>
+                    -->
+                </IceCandidates>
+            </WebRTC>
+        </Providers>
 
-				<IceCandidates>
-					<!-- 
-						If you want to stream WebRTC over TCP, specify IP:Port for TURN server.
-						This uses the TURN protocol, which delivers the stream from the built-in TURN server to the player's TURN client over TCP. 
-						For detailed information, refer https://airensoft.gitbook.io/ovenmediaengine/v/0.11.1/streaming/webrtc-publishing#webrtc-over-tcp
-					-->
-					<TcpRelay>*:3478</TcpRelay>
-					<IceCandidate>*:10000-10005/udp</IceCandidate>
+        <Publishers>
+            <OVT>
+                <Port>9000</Port>
+                <!-- <WorkerCount>1</WorkerCount> -->
+            </OVT>
+            <HLS>
+                <Port>80</Port>
+                <!-- If you want to use TLS, specify the TLS port -->
+                <!-- <TLSPort>443</TLSPort> -->
+                <!-- <WorkerCount>4</WorkerCount> -->
+            </HLS>
+            <DASH>
+                <Port>80</Port>
+                <!-- If you want to use TLS, specify the TLS port -->
+                <!-- <TLSPort>443</TLSPort> -->
+                <!-- <WorkerCount>4</WorkerCount> -->
+            </DASH>
+            <Thumbnail>
+                <Port>80</Port>
+                <!-- If you want to use TLS, specify the TLS port -->
+                <!-- <TLSPort>443</TLSPort> -->
+                <!-- <WorkerCount>4</WorkerCount> -->
+            </Thumbnail>
+            <WebRTC>
+                <Signalling>
+                    <Port>3333</Port>
+                    <!-- If you want to use TLS, specify the TLS port -->
+                    <!-- <TLSPort>3334</TLSPort> -->
+                    <!-- <WorkerCount>4</WorkerCount> -->
+                </Signalling>
 
-					<!--
-						Sets the number of worker threads to use in TcpRelay
-						
-						<TcpRelayWorkerCount>4</TcpRelayWorkerCount>
-					-->
-				</IceCandidates>
-			</WebRTC>
-		</Publishers>
-	</Bind>
+                <IceCandidates>
+                    <!-- 
+                        If you want to stream WebRTC over TCP, specify IP:Port for TURN server.
+                        This uses the TURN protocol, which delivers the stream from the built-in TURN server to the player's TURN client over TCP. 
+                        For detailed information, refer https://airensoft.gitbook.io/ovenmediaengine/v/0.11.1/streaming/webrtc-publishing#webrtc-over-tcp
+                    -->
+                    <TcpRelay>*:3478</TcpRelay>
+                    <IceCandidate>*:10000-10005/udp</IceCandidate>
 
-	<!-- P2P works only in WebRTC -->
-	<!--
-	<P2P>
-		<MaxClientPeersPerHostPeer>2</MaxClientPeersPerHostPeer>
-	</P2P>
-	-->
+                    <!--
+                        Sets the number of worker threads to use in TcpRelay
 
-	<!--
-		Enable this configuration if you want to use API Server
-		
-		<AccessToken> is a token for authentication, and when you invoke the API, you must put "Basic base64encode(<AccessToken>)" in the "Authorization" header of HTTP request.
-		For example, if you set <AccessToken> to "ome-access-token", you must set "Basic b21lLWFjY2Vzcy10b2tlbg==" in the "Authorization" header.
-	-->
-	<!--
-	<Managers>
-		<Host>
-			<Names>
-				<Name>*</Name>
-			</Names>
-			<TLS>
-				<CertPath>path/to/file.crt</CertPath>
-				<KeyPath>path/to/file.key</KeyPath>
-				<ChainCertPath>path/to/file.crt</ChainCertPath>
-			</TLS>
-		</Host>
-		<API>
-			<AccessToken>ome-access-token</AccessToken>
-		</API>
-	</Managers>
-	-->
+                        <TcpRelayWorkerCount>4</TcpRelayWorkerCount>
+                    -->
+                </IceCandidates>
+            </WebRTC>
+        </Publishers>
+    </Bind>
 
-	<VirtualHosts>
-		<!-- You can use wildcard like this to include multiple XMLs -->
-		<VirtualHost include="VHost*.xml" />
-		<VirtualHost>
-			<Name>default</Name>
+    <!-- P2P works only in WebRTC -->
+    <!--
+    <P2P>
+        <MaxClientPeersPerHostPeer>2</MaxClientPeersPerHostPeer>
+    </P2P>
+    -->
 
-			<!-- Settings for multi ip/domain and TLS -->
-			<Host>
-				<Names>
-					<!-- Host names
-						<Name>stream1.airensoft.com</Name>
-						<Name>stream2.airensoft.com</Name>
-						<Name>*.sub.airensoft.com</Name>
-						<Name>192.168.0.1</Name>
-					-->
-					<Name>*</Name>
-				</Names>
-				<!--
-				<TLS>
-					<CertPath>path/to/file.crt</CertPath>
-					<KeyPath>path/to/file.key</KeyPath>
-					<ChainCertPath>path/to/file.crt</ChainCertPath>
-				</TLS>
-				-->
-			</Host>
+    <!--
+        Enable this configuration if you want to use API Server
 
-			<!-- Refer https://airensoft.gitbook.io/ovenmediaengine/signedpolicy
+        <AccessToken> is a token for authentication, and when you invoke the API, you must put "Basic base64encode(<AccessToken>)" in the "Authorization" header of HTTP request.
+        For example, if you set <AccessToken> to "ome-access-token", you must set "Basic b21lLWFjY2Vzcy10b2tlbg==" in the "Authorization" header.
+    -->
+    <!--
+    <Managers>
+        <Host>
+            <Names>
+                <Name>*</Name>
+            </Names>
+            <TLS>
+                <CertPath>path/to/file.crt</CertPath>
+                <KeyPath>path/to/file.key</KeyPath>
+                <ChainCertPath>path/to/file.crt</ChainCertPath>
+            </TLS>
+        </Host>
+        <API>
+            <AccessToken>ome-access-token</AccessToken>
+        </API>
+    </Managers>
+    -->
 
-			<SignedPolicy>
-				<PolicyQueryKeyName>policy</PolicyQueryKeyName>
-				<SignatureQueryKeyName>signature</SignatureQueryKeyName>
-				<SecretKey>aKq#1kj</SecretKey>
+    <VirtualHosts>
+        <!-- You can use wildcard like this to include multiple XMLs -->
+        <VirtualHost include="VHost*.xml" />
+        <VirtualHost>
+            <Name>default</Name>
 
-				<Enables>
-					<Providers>rtmp</Providers>
-					<Publishers>webrtc,hls,dash,lldash</Publishers>
-				</Enables>
-			</SignedPolicy>
-			-->
+            <!-- Settings for multi ip/domain and TLS -->
+            <Host>
+                <Names>
+                    <!-- Host names
+                        <Name>stream1.airensoft.com</Name>
+                        <Name>stream2.airensoft.com</Name>
+                        <Name>*.sub.airensoft.com</Name>
+                        <Name>192.168.0.1</Name>
+                    -->
+                    <Name>*</Name>
+                </Names>
+                <!--
+                <TLS>
+                    <CertPath>path/to/file.crt</CertPath>
+                    <KeyPath>path/to/file.key</KeyPath>
+                    <ChainCertPath>path/to/file.crt</ChainCertPath>
+                </TLS>
+                -->
+            </Host>
 
-			<!--
-			<Origins>
-			
-				<Origin>
-					<Location>/app/stream</Location>
-					<Pass>
-						<Scheme>ovt</Scheme>
-						<Urls><Url>origin.com:9000/app/stream_720p</Url></Urls>
-					</Pass>
-				</Origin>
-				<Origin>
-					<Location>/app/</Location>
-					<Pass>
-						<Scheme>ovt</Scheme>
-						<Urls><Url>origin.com:9000/app/</Url></Urls>
-					</Pass>
-				</Origin>
-				<Origin>
-					<Location>/edge/</Location>
-					<Pass>
-						<Scheme>ovt</Scheme>
-						<Urls><Url>origin.com:9000/app/</Url></Urls>
-					</Pass>
-				</Origin>
-			</Origins>
-			-->
-			<!-- Settings for applications -->
-			<Applications>
-				<Application>
-					<Name>app</Name>
-					<!-- Application type (live/vod) -->
-					<Type>live</Type>
-					<OutputProfiles>
-						<OutputProfile>
-							<Name>bypass_stream</Name>
-							<OutputStreamName>${OriginStreamName}</OutputStreamName>
-							<Encodes>
-								<Audio>
-									<Bypass>true</Bypass>
-								</Audio>
-								<Video>
-									<Bypass>true</Bypass>
-								</Video>
-								<Audio>
-									<Codec>opus</Codec>
-									<Bitrate>128000</Bitrate>
-									<Samplerate>48000</Samplerate>
-									<Channel>2</Channel>
-								</Audio>
-								<!-- 							
-								<Video>
-									<Codec>vp8</Codec>
-									<Bitrate>1024000</Bitrate>
-									<Framerate>30</Framerate>
-									<Width>1280</Width>
-									<Height>720</Height>
-								</Video>								
-								-->
-							</Encodes>
-						</OutputProfile>
+            <!-- Refer https://airensoft.gitbook.io/ovenmediaengine/signedpolicy
 
-						<!-- For thumbnail -->
-						<!--
-						<OutputProfile>
-							<Name>default_stream</Name>
-							<OutputStreamName>${OriginStreamName}_preview</OutputStreamName>
-							<Encodes>
-								<Image>
-									<Codec>png</Codec>
-									<Framerate>1</Framerate>
-									<Width>1280</Width>
-									<Height>720</Height>
-								</Image>
-							</Encodes>
-						</OutputProfile>
-						-->
-					</OutputProfiles>
-					<Providers>
-						<OVT />
-						<WebRTC />
-						<RTMP />
-						<SRT />
-						<MPEGTS>
-							<StreamMap>
-								<!--
-									Set the stream name of the client connected to the port to "stream_${Port}"
-									For example, if a client connets to port 4000, OME creates a "stream_4000" stream
-								-->
-								<Stream>
-									<Name>stream_${Port}</Name>
-									<Port>4000,4001-4004</Port>
-								</Stream>
-								<Stream>
-									<Name>stream_4005</Name>
-									<Port>4005</Port>
-								</Stream>
-							</StreamMap>
-						</MPEGTS>
-						<RTSPPull />
-						<WebRTC>
-							<Timeout>30000</Timeout>
-						</WebRTC>
-					</Providers>
-					<Publishers>
-						<SessionLoadBalancingThreadCount>8</SessionLoadBalancingThreadCount>
-						<OVT />
-						<WebRTC>
-							<Timeout>30000</Timeout>
-							<Rtx>true</Rtx>
-							<Ulpfec>true</Ulpfec>
-						</WebRTC>
-						<HLS>
-							<SegmentDuration>5</SegmentDuration>
-							<SegmentCount>3</SegmentCount>
-							<CrossDomains>
-								<Url>*</Url>
-							</CrossDomains>
-						</HLS>
-						<DASH>
-							<SegmentDuration>5</SegmentDuration>
-							<SegmentCount>3</SegmentCount>
-							<CrossDomains>
-								<Url>*</Url>
-							</CrossDomains>
-						</DASH>
-						<LLDASH>
-							<SegmentDuration>5</SegmentDuration>
-							<CrossDomains>
-								<Url>*</Url>
-							</CrossDomains>
-						</LLDASH>
-						<!--
-						<Thumbnail>
-							<CrossDomains>
-								<Url>*</Url>
-							</CrossDomains>	
-						</Thumbnail>
-						-->
-					</Publishers>
-				</Application>
-			</Applications>
-		</VirtualHost>
-	</VirtualHosts>
+            <SignedPolicy>
+                <PolicyQueryKeyName>policy</PolicyQueryKeyName>
+                <SignatureQueryKeyName>signature</SignatureQueryKeyName>
+                <SecretKey>aKq#1kj</SecretKey>
+
+                <Enables>
+                    <Providers>rtmp</Providers>
+                    <Publishers>webrtc,hls,dash,lldash</Publishers>
+                </Enables>
+            </SignedPolicy>
+            -->
+
+            <!--
+            <Origins>
+
+                <Origin>
+                    <Location>/app/stream</Location>
+                    <Pass>
+                        <Scheme>ovt</Scheme>
+                        <Urls><Url>origin.com:9000/app/stream_720p</Url></Urls>
+                    </Pass>
+                </Origin>
+                <Origin>
+                    <Location>/app/</Location>
+                    <Pass>
+                        <Scheme>ovt</Scheme>
+                        <Urls><Url>origin.com:9000/app/</Url></Urls>
+                    </Pass>
+                </Origin>
+                <Origin>
+                    <Location>/edge/</Location>
+                    <Pass>
+                        <Scheme>ovt</Scheme>
+                        <Urls><Url>origin.com:9000/app/</Url></Urls>
+                    </Pass>
+                </Origin>
+            </Origins>
+            -->
+            <!-- Settings for applications -->
+            <Applications>
+                <Application>
+                    <Name>app</Name>
+                    <!-- Application type (live/vod) -->
+                    <Type>live</Type>
+                    <OutputProfiles>
+                        <OutputProfile>
+                            <Name>bypass_stream</Name>
+                            <OutputStreamName>${OriginStreamName}</OutputStreamName>
+                            <Encodes>
+                                <Audio>
+                                    <Bypass>true</Bypass>
+                                </Audio>
+                                <Video>
+                                    <Bypass>true</Bypass>
+                                </Video>
+                                <Audio>
+                                    <Codec>opus</Codec>
+                                    <Bitrate>128000</Bitrate>
+                                    <Samplerate>48000</Samplerate>
+                                    <Channel>2</Channel>
+                                </Audio>
+                                <!--                             
+                                <Video>
+                                    <Codec>vp8</Codec>
+                                    <Bitrate>1024000</Bitrate>
+                                    <Framerate>30</Framerate>
+                                    <Width>1280</Width>
+                                    <Height>720</Height>
+                                </Video>                                
+                                -->
+                            </Encodes>
+                        </OutputProfile>
+
+                        <!-- For thumbnail -->
+                        <!--
+                        <OutputProfile>
+                            <Name>default_stream</Name>
+                            <OutputStreamName>${OriginStreamName}_preview</OutputStreamName>
+                            <Encodes>
+                                <Image>
+                                    <Codec>png</Codec>
+                                    <Framerate>1</Framerate>
+                                    <Width>1280</Width>
+                                    <Height>720</Height>
+                                </Image>
+                            </Encodes>
+                        </OutputProfile>
+                        -->
+                    </OutputProfiles>
+                    <Providers>
+                        <OVT />
+                        <WebRTC />
+                        <RTMP />
+                        <SRT />
+                        <MPEGTS>
+                            <StreamMap>
+                                <!--
+                                    Set the stream name of the client connected to the port to "stream_${Port}"
+                                    For example, if a client connets to port 4000, OME creates a "stream_4000" stream
+                                -->
+                                <Stream>
+                                    <Name>stream_${Port}</Name>
+                                    <Port>4000,4001-4004</Port>
+                                </Stream>
+                                <Stream>
+                                    <Name>stream_4005</Name>
+                                    <Port>4005</Port>
+                                </Stream>
+                            </StreamMap>
+                        </MPEGTS>
+                        <RTSPPull />
+                        <WebRTC>
+                            <Timeout>30000</Timeout>
+                        </WebRTC>
+                    </Providers>
+                    <Publishers>
+                        <SessionLoadBalancingThreadCount>8</SessionLoadBalancingThreadCount>
+                        <OVT />
+                        <WebRTC>
+                            <Timeout>30000</Timeout>
+                            <Rtx>true</Rtx>
+                            <Ulpfec>true</Ulpfec>
+                        </WebRTC>
+                        <HLS>
+                            <SegmentDuration>5</SegmentDuration>
+                            <SegmentCount>3</SegmentCount>
+                            <CrossDomains>
+                                <Url>*</Url>
+                            </CrossDomains>
+                        </HLS>
+                        <DASH>
+                            <SegmentDuration>5</SegmentDuration>
+                            <SegmentCount>3</SegmentCount>
+                            <CrossDomains>
+                                <Url>*</Url>
+                            </CrossDomains>
+                        </DASH>
+                        <LLDASH>
+                            <SegmentDuration>5</SegmentDuration>
+                            <CrossDomains>
+                                <Url>*</Url>
+                            </CrossDomains>
+                        </LLDASH>
+                        <!--
+                        <Thumbnail>
+                            <CrossDomains>
+                                <Url>*</Url>
+                            </CrossDomains>    
+                        </Thumbnail>
+                        -->
+                    </Publishers>
+                </Application>
+            </Applications>
+        </VirtualHost>
+    </VirtualHosts>
 </Server>
 ```
 
