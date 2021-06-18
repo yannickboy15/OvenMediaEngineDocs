@@ -16,7 +16,7 @@
   * [TLS Encryption](streaming/tls-encryption.md)
 * [SignedPolicy](signedpolicy.md)
 * [Clustering](origin-edge-clustering.md)
-* [Thumbnail \(Beta\)](thumbnail-experiment.md)
+* [Thumbnail](thumbnail-experiment.md)
 * [Recording \(Beta\)](recording-experiment.md)
 * [Push Publishing \(Beta\)](push-publishing.md)
 * [REST API \(Beta\)](rest-api/README.md)
@@ -38,4 +38,6 @@
 * [Test Player](test-player.md)
 * [Troubleshooting](troubleshooting.md)
 * [P2P Delivery \(Experiment\)](p2p-delivery.md)
+* [Enable GPU Acceleration](gpu-usage/README.md)
+  * [Manual Installation](gpu-usage/manual-installation.md)
 

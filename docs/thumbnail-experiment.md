@@ -1,4 +1,4 @@
-# Thumbnail \(Beta\)
+# Thumbnail
 
 OvenMediaEngine can generate thumbnails from live streams. This allows you to organize a broadcast list on your website or monitor multiple streams at the same time.
 
