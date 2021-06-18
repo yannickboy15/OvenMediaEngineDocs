@@ -1,7 +1,13 @@
 # Enable GPU Acceleration
 
 OvenMediaEngine supports GPU-based hardware decoding and encoding. Currently supported GPU acceleration devices are Intel's QuickSync and NVIDIA's NVDECODE/NVENCODE. This document describes how to install the video driver for OvenMediaEngine to use the GPU and how to set the Config file.   
-Please check what graphics card you have and refer to the NVIDIA or INTEL driver installation guide.
+Please check what graphics card you have and refer to the NVIDIA or Intel driver installation guide.
+
+
+
+## Reference
+
+* Quick Sync Video format support:  [https://en.wikipedia.org/wiki/Intel\_Quick\_Sync\_Video](https://en.wikipedia.org/wiki/Intel_Quick_Sync_Video#AMD)
 
 ## Install GPU Driver
 
@@ -187,7 +193,7 @@ To use hardware acceleration, set the **HardwareAcceleration** option to **true*
 
 ## Build & Run
 
-You can build the OvenMediaEngine source using the following command:
+You can build the OvenMediaEngine source using the following command. Same as the contents of **Getting Started**.
 
 {% tabs %}
 {% tab title="Ubuntu  18+" %}
@@ -229,4 +235,28 @@ systemctl enable ovenmediaengine.service
 {% endtabs %}
 
 {% page-ref page="../getting-started.md" %}
+
+## Support Format
+
+The codecs available using hardware accelerators in OvenMediaEngine are as shown in the table below. Different GPUs support different codecs. If the hardware codec is not available, you should check if your GPU device supports the codec.
+
+| Device | H264 | H265 | VP8 | VP9 |
+| :--- | :---: | :---: | :---: | :---: |
+| QuickSync | D / E | D / E | - | - |
+| NVIDIA | D / E | D / E | - | - |
+| Docker on NVIDIA Container Toolkit | D / E | D / E | - | - |
+
+D : Decoding, E : Encoding
+
+## Reference
+
+* Quick Sync Video Format : [https://en.wikipedia.org/wiki/Intel\_Quick\_Sync\_Video](https://en.wikipedia.org/wiki/Intel_Quick_Sync_Video)
+* NVIDIA NVDEC Video Format : [https://en.wikipedia.org/wiki/Nvidia\_NVDEC](https://en.wikipedia.org/wiki/Nvidia_NVDEC)
+* NVIDIA NVENV Video Format : [https://en.wikipedia.org/wiki/Nvidia\_NVENC](https://en.wikipedia.org/wiki/Nvidia_NVENC)
+* CUDA Toolkit Installation Guide : [https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html\#introduction](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#introduction)
+* NVIDIA Container Toolkit : [https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/arch-overview.html\#arch-overview](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/arch-overview.html#arch-overview)
+
+
+
+## 
 
