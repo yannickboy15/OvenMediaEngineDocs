@@ -130,7 +130,7 @@ The transmitting address in OBS needs to use the `<Application name>` generated 
 
 We are strongly recommended that you use the CPU \(**ultrafast**\), Profile \(**baseline**\), and Tune \(**zerolatency**\) sections of the OBS configuration for low latency.
 
-![](.gitbook/assets/image%20%2816%29%20%282%29%20%282%29%20%281%29.png)
+![](.gitbook/assets/image%20%2816%29%20%282%29%20%282%29%20%282%29%20%282%29%20%281%29.png)
 
 ### Playback
 
