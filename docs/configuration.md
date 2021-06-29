@@ -320,7 +320,7 @@ To run the Edge server, Origin creates application and stream if there isn't tho
 </Application>
 ```
 
-For more information about the OutputProfiles, please see the [Transcoding](transcoding.md) chapter.
+For more information about the OutputProfiles, please see the [Transcoding](transcoding/) chapter.
 
 #### Providers
 

@@ -9,7 +9,9 @@
   * [SRT \(Beta\)](live-source/srt-beta.md)
   * [MPEG-2 TS](live-source/mpeg-2-ts-beta.md)
   * [RTSP Pull](live-source/rtsp-pull-beta.md)
-* [Transcoding](transcoding.md)
+* [Transcoding](transcoding/README.md)
+  * [Enable GPU Acceleration](transcoding/gpu-usage/README.md)
+    * [Manual Installation](transcoding/gpu-usage/manual-installation.md)
 * [Streaming](streaming/README.md)
   * [WebRTC Streaming](streaming/webrtc-publishing.md)
   * [Low-Latency DASH and HLS streaming](streaming/hls-mpeg-dash.md)
@@ -38,6 +40,4 @@
 * [Test Player](test-player.md)
 * [Troubleshooting](troubleshooting.md)
 * [P2P Delivery \(Experiment\)](p2p-delivery.md)
-* [Enable GPU Acceleration](gpu-usage/README.md)
-  * [Manual Installation](gpu-usage/manual-installation.md)
 
