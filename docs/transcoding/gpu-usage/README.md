@@ -82,7 +82,7 @@ Describes how to enable GPU acceleration for users running OvenMediaEngine in th
 ![Reference : https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/overview.html](../../.gitbook/assets/image%20%2829%29.png)
 
 ```bash
-OvenMediaEngine-master/misc/install_nvidia_docker_container.sh.sh
+OvenMediaEngine-master/misc/install_nvidia_docker_container.sh
 ```
 
 {% hint style="info" %}
