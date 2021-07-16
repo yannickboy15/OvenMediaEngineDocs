@@ -251,7 +251,7 @@ An unique identifier for recording c
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://<OME\_HOST>:<API\_PORT>" path="/v1/vhosts/{vhost\_name}/apps/{app\_name}:records" %}
+{% api-method method="post" host="http://<OME\_HOST>:<API\_PORT>" path="/v1/vhosts/{vhost\_name}/apps/{app\_name}:records" %}
 {% api-method-summary %}
 /v1/vhosts/{vhost\_name}/apps/{app\_name}:records
 {% endapi-method-summary %}
@@ -260,7 +260,7 @@ An unique identifier for recording c
 You can view all the recording lists that are being recorded in the application. Information such as recording status, file path, size, and recording time can be found in the inquired record item.  
   
 Request Example:  
-GET `http://1.2.3.4:8081/v1/vhosts/default/apps/app:records`
+POST`http://1.2.3.4:8081/v1/vhosts/default/apps/app:records`
 {% endapi-method-description %}
 
 {% api-method-spec %}

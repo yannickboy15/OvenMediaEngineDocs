@@ -243,7 +243,7 @@ Unique identifier for push management
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="http://<OME\_HOST>:<API\_PORT>" path="/v1/vhosts/{vhost\_name}/apps/{app\_name}:pushes" %}
+{% api-method method="post" host="http://<OME\_HOST>:<API\_PORT>" path="/v1/vhosts/{vhost\_name}/apps/{app\_name}:pushes" %}
 {% api-method-summary %}
 /v1/vhosts/{vhost\_name}/apps/{app\_name}:pushes
 {% endapi-method-summary %}
@@ -252,7 +252,7 @@ Unique identifier for push management
 Lists all `Record` in the `Application`  
   
 Request Example:  
-`GET http://1.2.3.4:8081/v1/vhosts/default/apps/app:pushes`
+`POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:pushes`
 {% endapi-method-description %}
 
 {% api-method-spec %}
