@@ -14,15 +14,12 @@ Request Example:
   "id": "userDefinedUniqueId",  
   "stream": {  
     "name": "outputStreamName",  
-    "tracks": [  
-      101,  
-      102  
-    ]  
+    "tracks": [ 101, 102 ]  
   },  
   "filePath" : "{/path/to/save/recorded/file.ts}",  
   "infoPath" : "{/Path/to/save/information/file.xml}",  
-  "interval" : 60000,              # Split it every 60 seconds  
-  "schedule" : "0 0 */1"           # Split it at second 0, minute 0, every hours.   
+  "interval" : 60000,         # Split it every 60 seconds  
+  "schedule" : "0 0 */1"      # Split it at second 0, minute 0, every hours.   
 }`
 {% endapi-method-description %}
 
