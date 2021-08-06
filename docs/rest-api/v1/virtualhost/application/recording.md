@@ -154,7 +154,7 @@ Path to save information file
 The action requesting the recording to stop. Use the id parameters used when requested.  
   
 Request Example:  
-`GET http://1.2.3.4:8081/v1/vhosts/default/apps/app:stopRecord  
+`POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:stopRecord  
   
 {  
   "id": "userDefinedUniqueId"  
