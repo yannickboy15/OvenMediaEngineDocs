@@ -87,19 +87,21 @@ Set the path to the information file to be recorded. Same as setting macro patte
 
 ```
 {
+    "statusCode": 200,
     "message": "OK",
     "response": [
         {
-            "id": "lotte_shop2",
+            "id": "CustomId",
             "vhost": "default",
             "app": "app",
             "stream": {
                 "name" : "stream_o"
                 "tracks": [100, 200]
-            }
+            },
+            "createdTime": "2021-08-06T22:47:10.528+0900",
+            "state" : "ready"            
         }
-    ],
-    "statusCode": 200
+    ]
 }
 ```
 {% endapi-method-response-example %}
@@ -167,7 +169,7 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 
 {% api-method-body-parameters %}
 {% api-method-parameter required=true name="id" type="string" %}
-An unique identifier for recording ㅓㅐ
+An unique identifier for recording job.
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
@@ -179,7 +181,23 @@ An unique identifier for recording ㅓㅐ
 {% endapi-method-response-example-description %}
 
 ```
-
+{
+    "statusCode": 200,
+    "message": "OK",
+    "response": [
+        {
+            "id": "CustomId",
+            "vhost": "default",
+            "app": "app",
+            "stream": {
+                "name" : "stream_o"
+                "tracks": [100, 200]
+            },
+            "createdTime": "2021-08-06T22:47:10.528+0900",
+            "state" : "Stopping"            
+        }
+    ]
+}
 ```
 {% endapi-method-response-example %}
 
@@ -219,10 +237,14 @@ An unique identifier for recording ㅓㅐ
 {% endapi-method-summary %}
 
 {% api-method-description %}
-You can view all the recording lists that are being recorded in the application. Information such as recording status, file path, size, and recording time can be found in the inquired record item.  
+This API performs a query of the job being recorded. Provides job inquiry function for all or custom Id.   
   
 Request Example:  
-`POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:records`                           
+`POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:records         
+  
+{  
+   "id" : "CustomId"  
+}`                    
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -243,6 +265,12 @@ A string for authentication in `Basic Base64(AccessToken)` format.
 For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-token`.
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
+
+{% api-method-body-parameters %}
+{% api-method-parameter name="id" type="string" required=false %}
+An unique identifier for recording job. If no value is specified, the entire recording job is requested.
+{% endapi-method-parameter %}
+{% endapi-method-body-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
@@ -253,55 +281,30 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 
 ```
 {
+    "statusCode": 200,
     "message": "OK",
     "response": [
-		{
-			"id": "UserDefinedUniqueId",
-			"app": "app",
-			"createdTime": "2021-01-18T03:27:16.019+09:00",
-			"finishTime": "1970-01-01T09:00:00+09:00",
-			"recordBytes": 0,
-			"recordTime": 0,
-			"sequence": 0,
-			"startTime": "1970-01-01T09:00:00+09:00",
-			"state": "ready",
-      "filePath" : "{/path/to/save/recorded/file.ts}",
-      "infoPath" : "{/Path/to/save/information/file.xml}"			 
-			"stream": {
-				"name": "stream2_o",
-				"tracks": [
-					101,
-					102
-				]
-			},
-			"totalRecordBytes": 0,
-			"totalRecordTime": 0,
-			"vhost": "default"
-		},
-		{
-			"id": "UserDefinedUniqueId2",
-			"app": "app",
-			"createdTime": "2021-01-18T03:24:31.812+09:00",
-			"finishTime": "1970-01-01T09:00:00+09:00",
-			"recordBytes": 0,
-			"recordTime": 0,
-			"sequence": 0,
-			"startTime": "1970-01-01T09:00:00+09:00",
-			"state": "ready",
-      "filePath" : "{/path/to/save/recorded/file.ts}",
-      "infoPath" : "{/Path/to/save/information/file.xml}"			
-			"stream": {
-				"name": "stream_o",
-				"tracks": [
-					101,
-					102
-				]
-			},
-			"totalRecordBytes": 0,
-			"totalRecordTime": 0,
-			"vhost": "default"
-		}
-	]
+        {
+            "id": "CustomId",
+            "app": "app",
+            "vhost": "default",
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "recordBytes": 416172732,
+            "recordTime": 665301,
+            "sequence": 0,
+            "createdTime": "2021-08-06T22:47:15.878+0900",
+            "startTime": "2021-08-06T22:47:16.043+0900",
+            "state": "recording",
+            "stream": {
+                "name": "stream_o",
+                "tracks": []
+            },
+            "totalRecordBytes": 416172732,
+            "totalRecordTime": 665301,
+
+        }
+    ]
 }
 ```
 {% endapi-method-response-example %}
