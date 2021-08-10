@@ -129,7 +129,7 @@ OvenMediaEngine-master/misc/prerequisites.sh --enable-qsv
 #### When using Docker container
 
 ```bash
-docker build --file Dockerfile.nv airensoft/ovenmediaengine:dev
+docker build --file Dockerfile.nv -t airensoft/ovenmediaengine:dev .
 ```
 
 ## Configuration
