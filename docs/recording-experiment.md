@@ -34,9 +34,9 @@ Various macro values are supported for file paths and names as shown below.
   <tbody>
     <tr>
       <td style="text-align:left">${TransactionId}</td>
-      <td style="text-align:left">Unique ID for the recording transaction. It is automatically issued when
-        recording starts by the user, and is released when recording is stopped.
-        It can be saved as a file divided into several in one recording request.</td>
+      <td style="text-align:left">Unique ID for the recording transaction. It is automatically created when
+        recording starts. and is released when recording is stopped. In case of
+        split recording, it is distinguished that it is the same transaction.</td>
     </tr>
     <tr>
       <td style="text-align:left">${Id}</td>
