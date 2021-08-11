@@ -145,7 +145,7 @@ Here is a detailed explanation of each element of Json payload:
 
 ### Security
 
-The Control Server may need to validate incoming http requests for security purposes. To do this, the AdmissionWebhooks module puts the value `X-OME-Signature` in the HTTP request header. X-OME-Signature is a value encrypted by using HMAC-SHA1 and the secret key set in `<AdmissionWebhooks><SecretKey>` of configuration.
+The control server may need to validate incoming http requests for security reasons. To do this, the AdmissionWebhooks module puts the `X-OME-Signature` value in the HTTP request header. `X-OME-Signature` is a value obtained by encrypting the payload of HTTP request with HMAC-SHA1 algorithm using the secret key set in &lt;AdmissionWebhooks&gt;&lt;SecretKey&gt; of the configuration.
 
 ### Conditions that triggers the request
 
