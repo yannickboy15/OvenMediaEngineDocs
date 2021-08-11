@@ -2,7 +2,7 @@
 
 ## Overview
 
-AdmissionWebhooks are HTTP callbacks that query the server for admission for publishing and playback.
+AdmissionWebhooks is HTTP callback that query the control server for admission for publishing and playback.
 
 ![](../.gitbook/assets/image%20%2832%29.png)
 
