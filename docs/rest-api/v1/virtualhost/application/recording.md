@@ -64,15 +64,15 @@ Scedule based split recording. set only &lt;second minute hour&gt; using crontab
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="interval" type="number" required=false %}
-Interval based split recording millisecond unit It cannot be used simultaneously with schedule.
+Interval based split recording  It cannot be used simultaneously with schedule.
 {% endapi-method-parameter %}
 
 {% api-method-parameter required=false name="filePath" type="string" %}
-Set the path of the file to be recorded. Same as setting macro pattern in Config file. 
+Set the path of the file to be recorded. same as setting macro pattern in Config file. 
 {% endapi-method-parameter %}
 
 {% api-method-parameter required=false name="infoPath" type="string" %}
-Set the path to the information file to be recorded. Same as setting macro pattern ni Config file. 
+Set the path to the information file to be recorded. same as setting macro pattern ni Config file. 
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
