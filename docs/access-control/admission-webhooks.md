@@ -6,7 +6,7 @@ AdmissionWebhooks is HTTP callback that query the control server for admission f
 
 ![](../.gitbook/assets/image%20%2832%29.png)
 
-Users can use AdmissionWebhooks to control publishing and playback, as well as record when publishing and playback, or hide external exposure of app/stream names.
+Users can use AdmissionWebhooks to control publishing and playback, as well as log when publishing and playback, or hide external exposure of app/stream names.
 
 ## Configuration
 
