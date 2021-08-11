@@ -2,11 +2,11 @@
 
 ## Overview
 
-AdmissionWebhooks is HTTP callback that query the control server for admission for publishing and playback.
+AdmissionWebhooks are HTTP callbacks that query the control server to control publishing and playback admission requests.
 
 ![](../.gitbook/assets/image%20%2832%29.png)
 
-Users can use AdmissionWebhooks to control publishing and playback, as well as log when publishing and playback, or hide external exposure of app/stream names.
+Users can use the AdmissionWebhook for a variety of purposes, including customer authentication, tracking published streams, logging and more.
 
 ## Configuration
 
