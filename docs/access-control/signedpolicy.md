@@ -144,7 +144,7 @@ Here's how to use this script:
 
 For example, you can use it like this:
 
-![](.gitbook/assets/image%20%2817%29.png)
+![](../.gitbook/assets/image%20%2817%29.png)
 
 ## Make SingedPolicy URL manually
 
@@ -206,9 +206,9 @@ ws://192.168.0.100/app/stream?policy=eyJ1cmxfZXhwaXJlIjoxMzk5NzIxNTgxfQ&signatur
 
 Generate SingedPolicy URL with the script.
 
-![](.gitbook/assets/image%20%2823%29.png)
+![](../.gitbook/assets/image%20%2823%29.png)
 
 Separate the URL based on "app" as shown in the example below and enter all the parts under the stream in the Stream Key.
 
-![](.gitbook/assets/image%20%2825%29.png)
+![](../.gitbook/assets/image%20%2825%29.png)
 

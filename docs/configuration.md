@@ -206,7 +206,7 @@ The Domain has `Names` and TLS. Names can be either a domain address or an IP ad
 
 ### SignedPolicy
 
-SignedPolicy is a module that limits the user's privileges and time. For example, operators can distribute RTMP URLs that can be accessed for 60 seconds to authorized users, and limit RTMP transmission to 1 hour. The provided URL will be destroyed after 60 seconds, and transmission will automatically stop after 1 hour. Users who are provided with a SingedPolicy URL cannot access resources other than the provided URL. This is because the SignedPolicy URL is authenticated. See the [SignedPolicy](signedpolicy.md) chapter for more information.
+SignedPolicy is a module that limits the user's privileges and time. For example, operators can distribute RTMP URLs that can be accessed for 60 seconds to authorized users, and limit RTMP transmission to 1 hour. The provided URL will be destroyed after 60 seconds, and transmission will automatically stop after 1 hour. Users who are provided with a SingedPolicy URL cannot access resources other than the provided URL. This is because the SignedPolicy URL is authenticated. See the [SignedPolicy](access-control/signedpolicy.md) chapter for more information.
 
 ### Origins
 
