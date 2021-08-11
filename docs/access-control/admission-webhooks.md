@@ -190,7 +190,10 @@ Connection: Closed
     <tr>
       <td style="text-align:left">allowed <b>(required)</b>
       </td>
-      <td style="text-align:left">Allows or rejects the client&apos;s request.</td>
+      <td style="text-align:left">
+        <p>true or false</p>
+        <p>Allows or rejects the client&apos;s request.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">new_url (optional)</td>
