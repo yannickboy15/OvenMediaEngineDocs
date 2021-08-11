@@ -18,7 +18,7 @@
   * [TLS Encryption](streaming/tls-encryption.md)
 * [Access Control](access-control/README.md)
   * [SignedPolicy](access-control/signedpolicy.md)
-  * [Admission Webhooks](access-control/admission-webhooks.md)
+  * [AdmissionWebhooks](access-control/admission-webhooks.md)
 * [Clustering](origin-edge-clustering.md)
 * [Thumbnail](thumbnail-experiment.md)
 * [Recording \(Beta\)](recording-experiment.md)

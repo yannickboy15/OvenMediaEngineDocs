@@ -1,4 +1,4 @@
-# Admission Webhooks
+# AdmissionWebhooks
 
 ## Overview
 
@@ -220,11 +220,11 @@ Connection: Closed
   </tbody>
 </table>
 
-### new url and lifetime
+### User authentication and control
 
 `new_url` redirects the original request to another app/stream. This can be used to hide the actual app/stream name from the user or to authenticate the user by inserting additional information instead of the app/stream name.
 
-For example, you can issue a WebRTC streaming URL by inserting the user ID as shown below. It will be more effective if you distribute the encrypted value with user ID, url expired time, and other information. `ws://domain.com:3333/user_id`
+For example, you can issue a WebRTC streaming URL by inserting the user ID as follows: `ws://domain.com:3333/user_id` It will be more effective if you issue a URl with the encrypted value that contains the user ID, url expiration time, and other information. 
 
 After the Control Server checks whether the user is authorized to play using `user_id`, and responds with `ws://domain.com:3333/app/sport-3` to `new_url`, the user can play app/sport-3.
 
