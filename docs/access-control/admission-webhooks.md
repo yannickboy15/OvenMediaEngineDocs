@@ -6,7 +6,7 @@ AdmissionWebhooks are HTTP callbacks that query the control server to control pu
 
 ![](../.gitbook/assets/image%20%2832%29.png)
 
-Users can use the AdmissionWebhook for a variety of purposes, including customer authentication, tracking published streams, logging and more.
+Users can use the AdmissionWebhook for a variety of purposes, including customer authentication, tracking published streams, hide app/stream names, logging and more.
 
 ## Configuration
 
