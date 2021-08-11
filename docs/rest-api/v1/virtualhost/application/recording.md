@@ -6,18 +6,15 @@
 {% endapi-method-summary %}
 
 {% api-method-description %}
-This is an action that requests recording of the output stream. The output file path can be set through API. If not set, the default output file path set in FILE Publisher in Server.xml is used. For information on settings, see the "Recording" document. You can also select the track to record by inquiring the Track ID through the stream inquiry API. If not selected, all tracks are recorded in one file.  
+This API performs a recording start request operation. for recording, the output stream name must be specified. file path, information path, recording interval and schedule parameters can be specified as options.  
   
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:startRecord  
 {  
-  "id": "userDefinedUniqueId",  
+  "id": "CustomId",  
   "stream": {  
-    "name": "outputStreamName",  
-    "tracks": [  
-      101,  
-      102  
-    ]  
+    "name": "stream_o",  
+    "tracks": [ 100, 200 ]  
   },  
   "filePath" : "{/path/to/save/recorded/file.ts}",  
   "infoPath" : "{/Path/to/save/information/file.xml}",  
@@ -46,38 +43,36 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
-{% api-method-parameter name="schedule" type="string" required=false %}
-Schedule based split recording.  set only &lt;second minute hour&gt; using crontab method  
-It cannot be used simultaneously with interval
-{% endapi-method-parameter %}
-
-{% api-method-parameter name="interval" type="number" required=false %}
-Interval based split recording. millisecond unit  
-It canoot be used sumultaneously with schedule
-{% endapi-method-parameter %}
-
 {% api-method-parameter name="id" type="string" required=true %}
-An unique identifier for recording management
+An unique identifier for recording job.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="stream" type="string" required=true %}
-Output stream for recording
+Output stream.
 {% endapi-method-parameter %}
 
-{% api-method-parameter required=true name="name" type="string" %}
-Output stream name
+{% api-method-parameter name="name" type="string" required=true %}
+Output stream name.
 {% endapi-method-parameter %}
 
-{% api-method-parameter required=false name="tracks" type="array" %}
-Track id for want to recording. If there is no value, all tracks are recorded
+{% api-method-parameter name="tracks" type="array" required=false %}
+Default is all tracks. it is possible to record only a specific track using the track id.
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="schedule" type="string" required=false %}
+Scedule based split recording. set only &lt;second minute hour&gt; using crontab method. It cannot be used simutaneously with interval
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="interval" type="number" required=false %}
+Interval based split recording millisecond unit It cannot be used simultaneously with schedule.
 {% endapi-method-parameter %}
 
 {% api-method-parameter required=false name="filePath" type="string" %}
-Path to save recorded file
+Set the path of the file to be recorded. Same as setting macro pattern in Config file. 
 {% endapi-method-parameter %}
 
 {% api-method-parameter required=false name="infoPath" type="string" %}
-Path to save information file
+Set the path to the information file to be recorded. Same as setting macro pattern ni Config file. 
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
@@ -90,31 +85,21 @@ Path to save information file
 
 ```
 {
-	"statusCode": 200,
-	"message": "Success",
-  "response": [
-    {
-      "app": "app",
-      "createdTime": "2021-02-03T10:52:22.037+0900",
-      "id": "{userDefinedUniqueId}",
-      "recordBytes": 0,
-      "recordTime": 0,
-      "sequence": 0,
-      "state": "ready",
-      "stream": {
-         "name": "{outputStreamName}",
-         "tracks": [
-          101,
-          102
-         ]
-      },
-      "totalRecordBytes": 0,
-      "totalRecordTime": 0,
-      "vhost": "default",
-      "filePath" : "{/path/to/save/recorded/file.ts}",
-      "infoPath" : "{/Path/to/save/information/file.xml}"
-    }
-  ]
+    "statusCode": 200,
+    "message": "OK",
+    "response": [
+        {
+            "id": "CustomId",
+            "vhost": "default",
+            "app": "app",
+            "stream": {
+                "name" : "stream_o"
+                "tracks": [100, 200]
+            },
+            "createdTime": "2021-08-06T22:47:10.528+0900",
+            "state" : "ready"            
+        }
+    ]
 }
 ```
 {% endapi-method-response-example %}
@@ -151,13 +136,12 @@ Path to save information file
 {% endapi-method-summary %}
 
 {% api-method-description %}
-The action requesting the recording to stop. Use the id parameters used when requested.  
+This API performs a recording stop request.  
   
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:stopRecord  
-  
 {  
-  "id": "userDefinedUniqueId"  
+  "id": "CustomId"  
 }`
 {% endapi-method-description %}
 
@@ -182,7 +166,7 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 
 {% api-method-body-parameters %}
 {% api-method-parameter required=true name="id" type="string" %}
-An unique identifier for recording c
+An unique identifier for recording job.
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
@@ -195,28 +179,21 @@ An unique identifier for recording c
 
 ```
 {
-	"statusCode": 200,
-	"message": "OK",
-	"response": [
-		{
-			"id": "{userDefinedUniqueId}",
-			"vhost": "default",
-	    "app": "app",
-			"stream": {
-				"name": "stream2_o",
-				"tracks": [
-					101,
-					102
-				]
-			},
-      "createdTime": "2021-01-18T03:27:16.019+09:00",
-			"startTime": "2021-01-18T03:27:16.019+09:00",
-			"finishTime": "2021-01-19T04:27:16.019+09:00",
-      "filePath" : "{/path/to/save/recorded/file.ts}",
-      "infoPath" : "{/Path/to/save/information/file.xml}"			
-			"state": "Stopping"
-		}
-	]
+    "statusCode": 200,
+    "message": "OK",
+    "response": [
+        {
+            "id": "CustomId",
+            "vhost": "default",
+            "app": "app",
+            "stream": {
+                "name" : "stream_o"
+                "tracks": [100, 200]
+            },
+            "createdTime": "2021-08-06T22:47:10.528+0900",
+            "state" : "Stopping"            
+        }
+    ]
 }
 ```
 {% endapi-method-response-example %}
@@ -257,10 +234,10 @@ An unique identifier for recording c
 {% endapi-method-summary %}
 
 {% api-method-description %}
-You can view all the recording lists that are being recorded in the application. Information such as recording status, file path, size, and recording time can be found in the inquired record item.  
+This API performs a query of the job being recorded. Provides job inquiry function for all or custom Id.  
   
 Request Example:  
-POST`http://1.2.3.4:8081/v1/vhosts/default/apps/app:records`
+`POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:records`
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -291,55 +268,30 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 
 ```
 {
+    "statusCode": 200,
     "message": "OK",
     "response": [
-		{
-			"id": "UserDefinedUniqueId",
-			"app": "app",
-			"createdTime": "2021-01-18T03:27:16.019+09:00",
-			"finishTime": "1970-01-01T09:00:00+09:00",
-			"recordBytes": 0,
-			"recordTime": 0,
-			"sequence": 0,
-			"startTime": "1970-01-01T09:00:00+09:00",
-			"state": "ready",
-      "filePath" : "{/path/to/save/recorded/file.ts}",
-      "infoPath" : "{/Path/to/save/information/file.xml}"			 
-			"stream": {
-				"name": "stream2_o",
-				"tracks": [
-					101,
-					102
-				]
-			},
-			"totalRecordBytes": 0,
-			"totalRecordTime": 0,
-			"vhost": "default"
-		},
-		{
-			"id": "UserDefinedUniqueId2",
-			"app": "app",
-			"createdTime": "2021-01-18T03:24:31.812+09:00",
-			"finishTime": "1970-01-01T09:00:00+09:00",
-			"recordBytes": 0,
-			"recordTime": 0,
-			"sequence": 0,
-			"startTime": "1970-01-01T09:00:00+09:00",
-			"state": "ready",
-      "filePath" : "{/path/to/save/recorded/file.ts}",
-      "infoPath" : "{/Path/to/save/information/file.xml}"			
-			"stream": {
-				"name": "stream_o",
-				"tracks": [
-					101,
-					102
-				]
-			},
-			"totalRecordBytes": 0,
-			"totalRecordTime": 0,
-			"vhost": "default"
-		}
-	]
+        {
+            "id": "CustomId",
+            "app": "app",
+            "vhost": "default",
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "recordBytes": 416172732,
+            "recordTime": 665301,
+            "sequence": 0,
+            "createdTime": "2021-08-06T22:47:15.878+0900",
+            "startTime": "2021-08-06T22:47:16.043+0900",
+            "state": "recording",
+            "stream": {
+                "name": "stream_o",
+                "tracks": []
+            },
+            "totalRecordBytes": 416172732,
+            "totalRecordTime": 665301,
+
+        }
+    ]
 }
 ```
 {% endapi-method-response-example %}
