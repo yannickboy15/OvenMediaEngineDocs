@@ -22,6 +22,9 @@ Our goal is to make it easier for you to build a stable broadcasting/streaming s
 * Legacy HLS/MPEG-DASH streaming
 * Embedded Live Transcoder \(VP8, H.264, Opus, AAC, Bypass\)
 * Origin-Edge structure
+* Access Control
+  * Signed Policy
+  * Admission Webhooks
 * Monitoring
 * Beta
   * File Recording
