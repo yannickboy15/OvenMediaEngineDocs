@@ -16,10 +16,11 @@ Request Example:
     "name": "stream_o",  
     "tracks": [ 100, 200 ]  
   },  
-  "filePath" : "{/path/to/save/recorded/file.ts}",  
-  "infoPath" : "{/Path/to/save/information/file.xml}",  
+  "filePath" : "/path/to/save/recorded/file.ts",  
+  "infoPath" : "/Path/to/save/information/file.xml",  
   "interval" : 60000,         # Split it every 60 seconds  
   "schedule" : "0 0 */1"      # Split it at second 0, minute 0, every hours.   
+  "segmentation" : "continuity"  
 }`
 {% endapi-method-description %}
 
@@ -43,6 +44,13 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
+{% api-method-parameter name="segmentation" type="string" required=false %}
+Define the policy for continuously or discontinuously generating timestamp in divided recorded files.  
+  
+- continuity   
+- discontinuity  \(default\)
+{% endapi-method-parameter %}
+
 {% api-method-parameter name="id" type="string" required=true %}
 An unique identifier for recording job.
 {% endapi-method-parameter %}
@@ -56,7 +64,9 @@ Output stream name.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="tracks" type="array" required=false %}
-Default is all tracks. It is possible to record only a specific track using the track Id.
+Default is all tracks. It is possible to record only a specific track using the track Id.  
+  
+- default is all tracks
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="schedule" type="string" required=false %}
