@@ -20,6 +20,7 @@ Request Example:
   "infoPath" : "{/Path/to/save/information/file.xml}",  
   "interval" : 60000,         # Split it every 60 seconds  
   "schedule" : "0 0 */1"      # Split it at second 0, minute 0, every hours.   
+  "segmentation" : "continuity | discontinuity"  
 }`
 {% endapi-method-description %}
 
@@ -43,6 +44,11 @@ For example, `Basic b21lLWFjY2Vzcy10b2tlbg==` if access token is `ome-access-tok
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
+{% api-method-parameter name="segmentation" type="string" required=false %}
+Defines the policy for continuously or discontinuously generating timestamp in divided recorded files.  
+\* default : discontinutity
+{% endapi-method-parameter %}
+
 {% api-method-parameter name="id" type="string" required=true %}
 An unique identifier for recording job.
 {% endapi-method-parameter %}
@@ -56,24 +62,29 @@ Output stream name.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="tracks" type="array" required=false %}
-Default is all tracks. It is possible to record only a specific track using the track Id.
+Default is all tracks. It is possible to record only a specific track using the track Id.  
+\*default : all tracks
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="schedule" type="string" required=false %}
 Schedule based split recording.  set only &lt;second minute hour&gt; using crontab method.  
-It cannot be used simultaneously with interval.
+It cannot be used simultaneously with interval.  
+\*default : none
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="interval" type="number" required=false %}
-Interval based split recording. It cannot be used simultaneously with schedule.
+Interval based split recording. It cannot be used simultaneously with schedule.  
+\*default: none
 {% endapi-method-parameter %}
 
 {% api-method-parameter required=false name="filePath" type="string" %}
-Set the path of the file to be recorded. same as setting macro pattern in Config file.
+Set the path of the file to be recorded. same as setting macro pattern in Config file.  
+\*default: server.xml setting
 {% endapi-method-parameter %}
 
 {% api-method-parameter required=false name="infoPath" type="string" %}
-Set the path to the information file to be recorded. same as setting macro pattern in Config file.
+Set the path to the information file to be recorded. same as setting macro pattern in Config file.  
+\*default : server.xml setting
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
