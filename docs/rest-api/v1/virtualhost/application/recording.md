@@ -11,12 +11,12 @@ This API performs a recording start request operation.  for recording, the outpu
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:startRecord                         
 {  
-  "id": "CustomId",  
+  "id": "custom_id",  
   "stream": {  
     "name": "stream_o",  
     "tracks": [ 100, 200 ]  
   },  
-  "filePath" : "/path/to/save/recorded/file.ts",  
+  "filePath" : "/path/to/save/recorded/file_${Sequence}.ts",  
   "infoPath" : "/path/to/save/information/file.xml",  
   "interval" : 60000,    # Split it every 60 seconds  
   "schedule" : "0 0 */1" # Split it at second 0, minute 0, every hours.   
@@ -96,21 +96,26 @@ Set the path to the information file to be recorded. same as setting macro patte
 
 ```
 {
-    "statusCode": 200,
     "message": "OK",
     "response": [
         {
-            "id": "CustomId",
+            "state": "ready",
+            "id": "stream_o",
             "vhost": "default",
             "app": "app",
             "stream": {
-                "name" : "stream_o"
-                "tracks": [100, 200]
+                "name": "stream_o",
+                "tracks": []
             },
-            "createdTime": "2021-08-06T22:47:10.528+0900",
-            "state" : "ready"            
+            "filePath": "/path/to/save/recorded/file_${Sequence}.ts",
+            "infoPath": "/path/to/save/information/file.xml",            
+            "interval": 60000,  
+            "schedule": "0 0 */1",       
+            "segmentationRule": "continuity",
+            "createdTime": "2021-08-31T23:44:44.789+0900"
         }
-    ]
+    ],
+    "statusCode": 200
 }
 ```
 {% endapi-method-response-example %}
@@ -151,7 +156,6 @@ This API performs a recording stop request.
   
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:stopRecord                           
-  
 {  
   "id": "CustomId"  
 }`
@@ -191,21 +195,29 @@ An unique identifier for recording job.
 
 ```
 {
-    "statusCode": 200,
     "message": "OK",
     "response": [
         {
-            "id": "CustomId",
+            "state": "stopping",
+            "id": "custom_id",            
             "vhost": "default",
             "app": "app",
             "stream": {
-                "name" : "stream_o"
-                "tracks": [100, 200]
+                "name": "stream_o",
+                "tracks": []
             },
-            "createdTime": "2021-08-06T22:47:10.528+0900",
-            "state" : "Stopping"            
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "segmentationRule": "discontinuity",
+            "recordBytes": 1200503,
+            "recordTime": 4272,
+            "totalRecordBytes": 1204775,
+            "totalRecordTime": 4272,
+            "createdTime": "2021-08-31T23:44:44.789+0900",
+            "startTime": "2021-08-31T23:44:44.849+0900"
         }
-    ]
+    ],
+    "statusCode": 200
 }
 ```
 {% endapi-method-response-example %}
@@ -250,7 +262,6 @@ This API performs a query of the job being recorded. Provides job inquiry functi
   
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:records         
-  
 {  
    "id" : "CustomId"  
 }`                    
@@ -290,30 +301,106 @@ An unique identifier for recording job. If no value is specified, the entire rec
 
 ```
 {
-    "statusCode": 200,
     "message": "OK",
     "response": [
         {
-            "id": "CustomId",
-            "app": "app",
+            "state": "ready",
+            "id": "custom_id_1",
             "vhost": "default",
-            "filePath": "app_stream_o_0.ts",
-            "infoPath": "app_stream_o.xml",
-            "recordBytes": 416172732,
-            "recordTime": 665301,
-            "sequence": 0,
-            "createdTime": "2021-08-06T22:47:15.878+0900",
-            "startTime": "2021-08-06T22:47:16.043+0900",
-            "state": "recording",
+            "app": "app",
             "stream": {
                 "name": "stream_o",
                 "tracks": []
             },
-            "totalRecordBytes": 416172732,
-            "totalRecordTime": 665301,
-
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "segmentationRule": "discontinuity",
+            "createdTime": "2021-08-31T21:05:01.171+0900",
+        },
+        {
+            "state": "recording",
+            "id": "custom_id_2",
+            "vhost": "default",                    
+            "app": "app",
+            "stream": {
+                "name": "stream_o",
+                "tracks": []
+            },
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "segmentationRule": "discontinuity",
+            "sequence": 0,
+            "recordBytes": 1907351,
+            "recordTime": 6968,
+            "totalRecordBytes": 1907351,
+            "totalRecordTime": 6968,
+            "createdTime": "2021-08-31T21:05:01.171+0900",            
+            "startTime": "2021-08-31T21:05:01.567+0900",            
+        },
+        {
+            "state": "stopping",
+            "id": "custom_id_3",
+            "vhost": "default",
+            "app": "app",
+            "stream": {
+                "name": "stream_o",
+                "tracks": []
+            },
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "segmentationRule": "discontinuity",
+            "sequence": 0,
+            "recordBytes": 1907351,
+            "recordTime": 6968,
+            "totalRecordBytes": 1907351,
+            "totalRecordTime": 6968,
+            "createdTime": "2021-08-31T21:05:01.171+0900",
+            "startTime": "2021-08-31T21:05:01.567+0900",
+        },
+        {
+            "state": "stopped",
+            "id": "custom_id_4",
+            "vhost": "default",        
+            "app": "app",
+            "stream": {
+                "name": "stream_o",
+                "tracks": []
+            },
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "segmentationRule": "discontinuity",
+            "sequence": 0,
+            "recordBytes": 1907351,
+            "recordTime": 6968,
+            "totalRecordBytes": 1907351,
+            "totalRecordTime": 6968,
+            "startTime": "2021-08-31T21:05:01.567+0900",            
+            "createdTime": "2021-08-31T21:05:01.171+0900",            
+            "finishTime": "2021-08-31T21:15:01.567+0900"
+        },
+        {
+            "state": "error",
+            "id": "custom_id_5",
+            "vhost": "default",        
+            "app": "app",
+            "stream": {
+                "name": "stream_o",
+                "tracks": []
+            },
+            "filePath": "app_stream_o_0.ts",
+            "infoPath": "app_stream_o.xml",
+            "segmentationRule": "discontinuity",
+            "sequence": 0,
+            "recordBytes": 1907351,
+            "recordTime": 6968,
+            "totalRecordBytes": 1907351,
+            "totalRecordTime": 6968,
+            "createdTime": "2021-08-31T21:05:01.171+0900",
+            "startTime": "2021-08-31T21:05:01.567+0900",
+            "finishTime": "2021-08-31T21:15:01.567+0900"
         }
-    ]
+    ],
+    "statusCode": 200
 }
 ```
 {% endapi-method-response-example %}
