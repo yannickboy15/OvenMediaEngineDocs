@@ -157,7 +157,7 @@ This API performs a recording stop request.
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:stopRecord                           
 {  
-  "id": "CustomId"  
+  "id": "custom_id"  
 }`
 {% endapi-method-description %}
 
@@ -263,7 +263,7 @@ This API performs a query of the job being recorded. Provides job inquiry functi
 Request Example:  
 `POST http://1.2.3.4:8081/v1/vhosts/default/apps/app:records         
 {  
-   "id" : "CustomId"  
+   "id" : "custom_id"  
 }`                    
 {% endapi-method-description %}
 
