@@ -8,8 +8,11 @@ OvenMediaEngine currently supports the following codecs:
 
 | Video Decoding | Audio Decoding | Video Encoding | Audio Encoding |
 | :--- | :--- | :--- | :--- |
-| H.264 \(Baseline\) | AAC | H.264 \(Baseline\) | AAC |
-|  |  | VP8 | Opus |
+| H264  | AAC | H264  | AAC |
+| H265 | OPUS | H265 | OPUS |
+| VP8 |  | VP8 |  |
+|  |  | JPEG |  |
+|  |  | PNG |  |
 
 ## OutputProfiles
 
@@ -69,10 +72,10 @@ The meaning of each property is as follows:
 
 | Property | Description |
 | :--- | :--- |
-| Codec | Specifies the `vp8` or `h264` codec to use |
+| Codec | Specifies the `vp8, h264, h265` codec to use |
+| Bitrate | Bit per second |
 | Width | Width of resolution |
 | Height | Height of resolution |
-| Bitrate | Bit per second |
 | Framerate | Frames per second |
 
 #### Audio
