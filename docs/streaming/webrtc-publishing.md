@@ -163,6 +163,7 @@ OME may sometimes not be able to get the server's public IP to its local interfa
 					<IceCandidates>
 						<!-- <TcpRelay>*:3478</TcpRelay> -->
 						<TcpRelay>Relay IP:Port</TcpRelay>
+						<TcpForce>false</TcpForce>
 						<IceCandidate>*:10000-10005/udp</IceCandidate>
 					</IceCandidates>
 				</WebRTC>
@@ -186,6 +187,10 @@ ws(s)://host:port/app/stream?transport=tcp
 ```
 
 OvenPlayer automatically sets iceServers by obtaining TURN server information set in &lt;TcpRelay&gt; through signaling with OvenMediaEngine. 
+
+{% hint style="info" %}
+If  is set to true, it will force a TCP connection even if ?transport=tcp is not present. To use this,  must be set.
+{% endhint %}
 
 ### Custom player
 
