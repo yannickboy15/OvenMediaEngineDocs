@@ -337,7 +337,7 @@ It is recommended that this value does not exceed the number of CPU cores.
 
 | Type | Value |
 | :--- | :--- |
-| Default | 1 |
+| Default | 8 |
 | Minimum | 0 |
 | Maximum | 72 |
 
