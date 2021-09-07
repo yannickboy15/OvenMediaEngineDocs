@@ -263,7 +263,7 @@ The WorkerCount in `<Bind>` can set the thread responsible for sending and recei
 </Application>
 ```
 
-#### Elements of the configuration associated with the thread name
+#### Scalable Threads and Configuration
 
 <table>
   <thead>
