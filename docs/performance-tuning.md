@@ -36,7 +36,7 @@ $ go run OvenRtcTester.go
 You can also use `go build` or `go install` depending on your preference.
 
 {% hint style="warning" %}
-venRtcTest must test OvenMediaEngine 0.12.3 or higher. OvenMediaEngine version 0.12.3 has a problem in calculating the RTP timestamp incorrectly, so OvenRtcTest calculates the Video Delay value incorrectly.
+OvenRtcTester must test OvenMediaEngine 0.12.3 or higher as the target system. OvenMediaEngine versions below 0.12.3 have a problem with incorrectly calculating the RTP timestamp, so OvenRtcTester calculates the `Video Delay` value incorrectly.
 {% endhint %}
 
 ```bash
