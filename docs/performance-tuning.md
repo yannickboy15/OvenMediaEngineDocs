@@ -35,6 +35,10 @@ $ go run OvenRtcTester.go
 
 You can also use `go build` or `go install` depending on your preference.
 
+{% hint style="warning" %}
+OvenRtcTest must test OvenMediaEngine 0.12.3 or higher. OvenMediaEngine version 0.12.3 has a problem in calculating the RTP timestamp incorrectly, so OvenRtcTest calculates the Video Delay value incorrectly.
+{% endhint %}
+
 ```bash
 $ go run OvenRtcTester.go -url ws://192.168.0.160:13333/app/stream -n 5
 client_0 connection state has changed checking 
