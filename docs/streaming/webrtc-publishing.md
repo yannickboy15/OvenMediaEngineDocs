@@ -189,7 +189,7 @@ ws(s)://host:port/app/stream?transport=tcp
 OvenPlayer automatically sets iceServers by obtaining TURN server information set in &lt;TcpRelay&gt; through signaling with OvenMediaEngine. 
 
 {% hint style="info" %}
-If  is set to true, it will force a TCP connection even if ?transport=tcp is not present. To use this,  must be set.
+If `<TcpForce>` is set to true, it will force a TCP connection even if `?transport=tcp` is not present. To use this, `<TcpRelay>` must be set.
 {% endhint %}
 
 ### Custom player
