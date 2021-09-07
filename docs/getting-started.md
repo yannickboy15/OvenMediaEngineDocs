@@ -34,7 +34,7 @@ OvenMediaEngine can work with a variety of open-sources and libraries. First, in
 
 ```bash
 (curl -LOJ https://github.com/AirenSoft/OvenMediaEngine/archive/v0.12.3.tar.gz && tar xvfz OvenMediaEngine-0.12.3.tar.gz)
-OvenMediaEngine-master/misc/prerequisites.sh
+OvenMediaEngine-0.12.3/misc/prerequisites.sh
 ```
 
 {% hint style="info" %}
