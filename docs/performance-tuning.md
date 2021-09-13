@@ -353,8 +353,8 @@ If a large number of streams are created and very few viewers connect to each st
 
 ```text
 <Publishers>
-  <StreamLoadBalancingThreadCount>32</StreamLoadBalancingThreadCount>
-  <SessionLoadBalancingThreadCount>0</SessionLoadBalancingThreadCount>
+  <AppWorkerCount>32</AppWorkerCount>
+  <StreamWorkerCount>0</StreamWorkerCount>
 </Publishers>
 ```
 
@@ -362,8 +362,8 @@ If a small number of streams are created and a very large number of viewers are 
 
 ```text
 <Publishers>
-  <StreamLoadBalancingThreadCount>1</StreamLoadBalancingThreadCount>
-  <SessionLoadBalancingThreadCount>32</SessionLoadBalancingThreadCount>
+  <AppWorkerCount>1</AppWorkerCount>
+  <StreamWorkerCount>32</StreamWorkerCount>
 </Publishers>
 ```
 
