@@ -278,7 +278,7 @@ The WorkerCount in `<Bind>` can set the thread responsible for sending and recei
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">AppWorker</td>
+      <td style="text-align:left">AW-XXX</td>
       <td style="text-align:left">&lt;Application&gt;&lt;Publishers&gt;&lt;AppWorkerCount&gt;</td>
     </tr>
     <tr>
@@ -286,7 +286,7 @@ The WorkerCount in `<Bind>` can set the thread responsible for sending and recei
       <td style="text-align:left">&lt;Application&gt;&lt;Publishers&gt;&lt;StreamWorkerCount&gt;</td>
     </tr>
     <tr>
-      <td style="text-align:left">SPICE</td>
+      <td style="text-align:left">SPICE-XXX</td>
       <td style="text-align:left">
         <p>&lt;Bind&gt;&lt;Provider&gt;&lt;WebRTC&gt;&lt;IceCandidates&gt;&lt;TcpRelayWorkerCount&gt;</p>
         <p>&lt;Bind&gt;&lt;Pubishers&gt;&lt;WebRTC&gt;&lt;IceCandidates&gt;&lt;TcpRelayWorkerCount&gt;</p>
@@ -307,7 +307,7 @@ The WorkerCount in `<Bind>` can set the thread responsible for sending and recei
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">SPRTMP</td>
+      <td style="text-align:left">SPRTMP-XXX</td>
       <td style="text-align:left">&lt;Bind&gt;&lt;Providers&gt;&lt;RTMP&gt;&lt;WorkerCount&gt;</td>
     </tr>
     <tr>
