@@ -20,8 +20,8 @@ You can set the following environment variables.
 | OME\_RTMP\_PROV\_PORT | 1935 |
 | OME\_SRT\_PROV\_PORT | 9999/udp |
 | OME\_MPEGTS\_PROV\_PORT | 4000-4005/udp |
-| OME\_HLS\_PUB\_PORT | 8080 |
-| OME\_DASH\_PUB\_PORT | 8080 |
+| OME\_HLS\_STREAM\_PORT | 8080 |
+| OME\_DASH\_STREAM\_PORT | 8080 |
 | OME\_TCP\_RELAY\_ADDRESS | \*:3478 |
 | OME\_ICE\_CANDIDATES | \*:10006-10010/udp |
 | OME\_SIGNALLING\_PORT | 3333 |
